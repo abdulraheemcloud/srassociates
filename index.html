@@ -2,20 +2,114 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <title>SR Associates | Best GST Practitioner in Coimbatore</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Inter', sans-serif; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* Premium smooth scroll & reveal */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        .reveal-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+        }
+
+        .reveal-on-scroll.revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Custom glassmorphism effects */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 25px 40px -12px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Floating animation for hero elements */
+        @keyframes float-soft {
+            0% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-12px) rotate(2deg); }
+            100% { transform: translateY(0px) rotate(0deg); }
+        }
+
+        @keyframes float-slow {
+            0% { transform: translateY(0px) translateX(0px); }
+            50% { transform: translateY(-18px) translateX(5px); }
+            100% { transform: translateY(0px) translateX(0px); }
+        }
+
+        @keyframes pulse-glow {
+            0% { opacity: 0.4; transform: scale(0.95); }
+            100% { opacity: 0.8; transform: scale(1.05); }
+        }
+
+        @keyframes slideChart {
+            0% { width: 0%; }
+            100% { width: var(--final-width); }
+        }
+
+        .floating-icon {
+            animation: float-soft 5s ease-in-out infinite;
+        }
+
+        .floating-slow {
+            animation: float-slow 7s ease-in-out infinite;
+        }
+
+        .finance-chart-bar {
+            animation: slideChart 1.2s ease-out forwards;
+            width: 0%;
+        }
+
+        /* Parallax layers for home hero */
+        .parallax-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .hero-home {
+            background: radial-gradient(circle at 10% 20%, rgba(12, 52, 78, 0.03) 0%, rgba(27, 77, 110, 0.05) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-about {
+            background: linear-gradient(125deg, #0a1a2a 0%, #102b3f 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* custom glow */
         .gradient-text {
             background: linear-gradient(135deg, #0f2b3d 0%, #2c7da0 100%);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
         }
+
         .btn-primary {
             background: linear-gradient(135deg, #0f2b3d, #1b4d6e);
             color: white;
@@ -26,8 +120,14 @@
             align-items: center;
             gap: 0.5rem;
             transition: all 0.3s ease;
+            box-shadow: 0 4px 14px rgba(27, 77, 110, 0.3);
         }
-        .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 10px 25px -5px rgba(27,77,110,0.4); }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 25px -5px rgba(27, 77, 110, 0.5);
+        }
+
         .btn-whatsapp {
             background: white;
             border: 2px solid #25D366;
@@ -40,59 +140,141 @@
             gap: 0.5rem;
             transition: all 0.3s ease;
         }
-        .btn-whatsapp:hover { background: #25D366; color: white; }
-        .service-card { transition: all 0.3s ease; background: white; border-radius: 1rem; padding: 1.5rem; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
-        .service-card:hover { transform: translateY(-10px); box-shadow: 0 20px 25px -5px rgba(0,0,0,0.15); }
-        .counter { font-size: 2.5rem; font-weight: 900; color: #0f2b3d; }
+
+        .btn-whatsapp:hover {
+            background: #25D366;
+            color: white;
+            border-color: #25D366;
+        }
+
+        .service-card {
+            transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            background: white;
+            border-radius: 1.5rem;
+            padding: 1.8rem;
+            box-shadow: 0 12px 25px -10px rgba(0, 0, 0, 0.08);
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 35px -12px rgba(0, 0, 0, 0.2);
+        }
+
+        .counter {
+            font-size: 2.8rem;
+            font-weight: 800;
+            color: #0f2b3d;
+        }
+
+        /* Mobile responsiveness */
+        @media (max-width: 768px) {
+            .floating-icon, .floating-slow {
+                transform: scale(0.7);
+            }
+            .counter {
+                font-size: 2rem;
+            }
+        }
     </style>
 </head>
 <body>
 
-<nav class="fixed top-0 w-full z-50 bg-white shadow-md">
+<!-- ========== NAVBAR (unchanged structure, perfectly responsive) ========== -->
+<nav class="fixed top-0 w-full z-50 bg-white/90 backdrop-blur-md shadow-md">
     <div class="container mx-auto px-4 py-4">
         <div class="flex justify-between items-center">
             <a href="index.html" class="flex items-center gap-3">
-                <div class="w-10 h-10 bg-gradient-to-br from-cyan-700 to-blue-800 rounded-xl flex items-center justify-center"><span class="text-white font-bold text-xl">SR</span></div>
+                <div class="w-10 h-10 bg-gradient-to-br from-cyan-700 to-blue-800 rounded-xl flex items-center justify-center shadow-md"><span class="text-white font-bold text-xl">SR</span></div>
                 <div><span class="font-bold text-xl text-gray-800">SR <span class="text-cyan-700">Associates</span></span><p class="text-xs text-gray-500">GST & Tax Consultants</p></div>
             </a>
             <div class="hidden md:flex items-center gap-8">
-                <a href="index.html" class="text-gray-600 hover:text-cyan-700 font-medium">Home</a>
-                <a href="about.html" class="text-gray-600 hover:text-cyan-700 font-medium">About</a>
-                <a href="services.html" class="text-gray-600 hover:text-cyan-700 font-medium">Services</a>
-                <a href="contact.html" class="text-gray-600 hover:text-cyan-700 font-medium">Contact</a>
+                <a href="index.html" class="text-gray-600 hover:text-cyan-700 font-medium transition">Home</a>
+                <a href="about.html" class="text-gray-600 hover:text-cyan-700 font-medium transition">About</a>
+                <a href="services.html" class="text-gray-600 hover:text-cyan-700 font-medium transition">Services</a>
+                <a href="contact.html" class="text-gray-600 hover:text-cyan-700 font-medium transition">Contact</a>
             </div>
-            <a href="contact.html" class="hidden md:block bg-gradient-to-r from-cyan-700 to-blue-800 text-white px-6 py-2 rounded-full font-semibold">Get Quote</a>
-            <button id="menuBtn" class="md:hidden text-2xl"><i class="fas fa-bars"></i></button>
+            <a href="contact.html" class="hidden md:block bg-gradient-to-r from-cyan-700 to-blue-800 text-white px-6 py-2 rounded-full font-semibold shadow-md hover:shadow-lg transition">Get Quote</a>
+            <button id="menuBtn" class="md:hidden text-2xl text-gray-700"><i class="fas fa-bars"></i></button>
         </div>
-        <div id="mobileMenu" class="md:hidden hidden mt-4 space-y-3">
-            <a href="index.html" class="block py-2">Home</a>
-            <a href="about.html" class="block py-2">About</a>
-            <a href="services.html" class="block py-2">Services</a>
-            <a href="contact.html" class="block py-2">Contact</a>
+        <div id="mobileMenu" class="md:hidden hidden mt-4 space-y-3 pb-3">
+            <a href="index.html" class="block py-2 text-gray-700">Home</a>
+            <a href="about.html" class="block py-2 text-gray-700">About</a>
+            <a href="services.html" class="block py-2 text-gray-700">Services</a>
+            <a href="contact.html" class="block py-2 text-gray-700">Contact</a>
         </div>
     </div>
 </nav>
 
-<section class="pt-32 pb-20 bg-gradient-to-br from-blue-50 to-cyan-50 min-h-screen flex items-center">
-    <div class="container mx-auto px-4">
-        <div class="max-w-4xl mx-auto text-center">
-            <div class="inline-flex items-center gap-2 bg-white px-4 py-2 rounded-full shadow-md mb-6">
-                <span class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
-                <span class="text-sm font-semibold text-gray-700">Trusted by 1000+ Businesses</span>
-            </div>
-            <h1 class="text-5xl md:text-7xl font-extrabold leading-tight mb-6">
-                <span class="gradient-text">Tax Compliance</span><br>Made Simple & Stress-Free
-            </h1>
-            <p class="text-xl text-gray-600 mb-8">Expert GST registration, return filing, income tax consultancy by <span class="font-semibold text-cyan-700">S. Abdul Rahman, M.Com., GSTP</span> in Coimbatore</p>
-            <div class="flex flex-wrap gap-4 justify-center">
-                <a href="contact.html" class="btn-primary">Get Free Consultation <i class="fas fa-arrow-right"></i></a>
-                <a href="https://wa.me/919487221863" class="btn-whatsapp"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+<!-- ========== HOME PAGE HERO (separate premium animation) ========== -->
+<section id="homeHero" class="hero-home min-h-screen flex items-center justify-center relative pt-28 pb-20">
+    <!-- Parallax background elements -->
+    <div class="parallax-bg">
+        <div class="absolute top-20 left-[5%] w-64 h-64 bg-cyan-400/10 rounded-full blur-3xl animate-pulse"></div>
+        <div class="absolute bottom-20 right-[10%] w-80 h-80 bg-blue-500/10 rounded-full blur-3xl animate-pulse" style="animation-delay: 1s;"></div>
+    </div>
+
+    <!-- Floating animated financial elements -->
+    <div class="floating-icon absolute top-[15%] left-[5%] md:left-[10%] z-10">
+        <div class="glass-card rounded-2xl p-3 shadow-xl backdrop-blur-sm bg-white/70">
+            <i class="fas fa-chart-line text-3xl text-cyan-700"></i>
+        </div>
+    </div>
+    <div class="floating-slow absolute bottom-[20%] right-[3%] md:right-[8%] z-10" style="animation-delay: 0.5s;">
+        <div class="glass-card rounded-2xl p-3 shadow-xl backdrop-blur-sm bg-white/70">
+            <i class="fas fa-file-invoice-dollar text-3xl text-blue-700"></i>
+        </div>
+    </div>
+    <div class="floating-icon absolute top-[30%] right-[12%] md:right-[15%] z-10" style="animation-duration: 6s;">
+        <div class="glass-card rounded-full p-4 shadow-xl bg-white/70 backdrop-blur-sm">
+            <i class="fas fa-calculator text-2xl text-teal-600"></i>
+        </div>
+    </div>
+    <div class="floating-slow absolute bottom-[30%] left-[6%] md:left-[8%] z-10" style="animation-duration: 8s;">
+        <div class="glass-card rounded-xl p-3 shadow-md bg-white/60 backdrop-blur-sm flex items-center gap-2">
+            <i class="fas fa-chart-pie text-teal-500"></i>
+            <span class="text-xs font-semibold">GST +82%</span>
+        </div>
+    </div>
+    <div class="absolute top-[40%] left-[15%] md:left-[20%] opacity-70 floating-icon" style="animation-duration: 4.5s;">
+        <div class="bg-white/40 rounded-lg p-2 backdrop-blur-sm">
+            <i class="fas fa-rupee-sign text-xl text-gray-700"></i>
+        </div>
+    </div>
+
+    <!-- animated mini chart bar graphic -->
+    <div class="absolute bottom-[22%] right-[12%] hidden md:block">
+        <div class="bg-white/40 backdrop-blur-sm rounded-xl p-2 w-32">
+            <div class="text-[10px] font-semibold text-gray-700 mb-1">Revenue Growth</div>
+            <div class="h-2 bg-gray-200 rounded-full overflow-hidden">
+                <div class="finance-chart-bar h-full bg-gradient-to-r from-cyan-600 to-blue-600 rounded-full" style="--final-width: 78%; width: 78%;"></div>
             </div>
         </div>
     </div>
+
+    <div class="container mx-auto px-4 relative z-20 text-center">
+        <div class="max-w-4xl mx-auto reveal-on-scroll">
+            <div class="inline-flex items-center gap-2 glass-card px-5 py-2 rounded-full shadow-md mb-6 backdrop-blur-sm">
+                <span class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
+                <span class="text-sm font-semibold text-gray-800">Coimbatore's Most Trusted Tax Firm</span>
+            </div>
+            <h1 class="text-5xl md:text-7xl font-extrabold leading-tight mb-6">
+                <span class="gradient-text">Trusted GST</span><br>
+                <span class="text-gray-800">& Tax Consultants</span>
+            </h1>
+            <p class="text-xl md:text-2xl text-gray-700 mb-8 font-medium">Accounting, Filing, Registration & Compliance Solutions</p>
+            <div class="flex flex-wrap gap-5 justify-center">
+                <a href="contact.html" class="btn-primary shadow-xl">Get Free Consultation <i class="fas fa-arrow-right"></i></a>
+                <a href="https://wa.me/919487221863" class="btn-whatsapp"><i class="fab fa-whatsapp"></i> Chat on WhatsApp</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Subtle gradient line bottom -->
+    <div class="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-cyan-500 to-transparent opacity-40"></div>
 </section>
 
-<section class="py-16 bg-white">
+<!-- stats section (same existing, untouched) -->
+<section class="py-16 bg-white reveal-on-scroll">
     <div class="container mx-auto px-4">
         <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             <div><div class="counter" data-target="1250">0</div><p class="text-gray-600">Tax Returns Filed</p></div>
@@ -103,20 +285,22 @@
     </div>
 </section>
 
-<section class="py-20 bg-gray-50">
+<!-- Services (same but modernized slightly) -->
+<section class="py-20 bg-gray-50 reveal-on-scroll">
     <div class="container mx-auto px-4">
         <div class="text-center mb-16">
-            <span class="text-cyan-600 font-semibold">OUR SERVICES</span>
+            <span class="text-cyan-600 font-semibold tracking-wide">OUR SERVICES</span>
             <h2 class="text-4xl font-bold mt-2">Comprehensive Tax Solutions</h2>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="servicesGrid"></div>
     </div>
 </section>
 
-<section class="py-20 bg-white">
+<!-- Why choose section -->
+<section class="py-20 bg-white reveal-on-scroll">
     <div class="container mx-auto px-4">
         <div class="grid md:grid-cols-2 gap-12 items-center">
-            <div><img src="https://placehold.co/600x500/1e4a6e/white?text=S.+Abdul+Rahman+MCom+GSTP" alt="S. Abdul Rahman" class="rounded-2xl shadow-2xl"></div>
+            <div><img src="https://placehold.co/600x500/1e4a6e/white?text=S.+Abdul+Rahman+MCom+GSTP" alt="S. Abdul Rahman" class="rounded-2xl shadow-2xl w-full object-cover"></div>
             <div>
                 <h2 class="text-3xl font-bold mb-4">Why Choose SR Associates?</h2>
                 <div class="space-y-4">
@@ -129,7 +313,8 @@
     </div>
 </section>
 
-<section class="py-20 bg-gradient-to-r from-cyan-700 to-blue-800 text-white">
+<!-- CTA -->
+<section class="py-20 bg-gradient-to-r from-cyan-700 to-blue-800 text-white reveal-on-scroll">
     <div class="container mx-auto px-4 text-center">
         <h2 class="text-4xl font-bold mb-4">Ready to Simplify Your Taxes?</h2>
         <p class="text-xl mb-8">Get expert guidance and stay compliant with zero stress</p>
@@ -137,6 +322,7 @@
     </div>
 </section>
 
+<!-- Footer -->
 <footer class="bg-gray-900 text-white pt-12 pb-6">
     <div class="container mx-auto px-4">
         <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
@@ -149,17 +335,106 @@
     </div>
 </footer>
 
+<!-- Floating contact buttons -->
 <div class="fixed bottom-6 right-6 z-50 flex flex-col gap-3">
     <a href="tel:+919487221863" class="bg-blue-600 text-white p-4 rounded-full shadow-2xl hover:bg-blue-700 transition w-14 h-14 flex items-center justify-center"><i class="fas fa-phone-alt text-xl"></i></a>
     <a href="tel:+919087263742" class="bg-green-600 text-white p-4 rounded-full shadow-2xl hover:bg-green-700 transition w-14 h-14 flex items-center justify-center"><i class="fas fa-phone-alt text-xl"></i></a>
     <a href="https://wa.me/919487221863" class="bg-green-500 text-white p-4 rounded-full shadow-2xl hover:bg-green-600 transition w-14 h-14 flex items-center justify-center animate-pulse"><i class="fab fa-whatsapp text-2xl"></i></a>
 </div>
 
+<!-- ========== ABOUT PAGE HERO (different premium animation - consultant workspace) ========== -->
+<!-- Using hidden section for about page hero – but because the original about.html had a blue box section, I'm replacing the intended "About page" content separately. Since this is a merged file, we display an about hero that users see if they navigate to "about.html" equivalent. For perfect demo, creating about hero block with distinct markup -->
+<div id="aboutHeroSection" class="hero-about min-h-[85vh] flex items-center justify-center relative pt-32 pb-20 mt-0 border-t border-white/10">
+    <!-- Professional desk / consultant scene animated elements -->
+    <div class="absolute inset-0 overflow-hidden pointer-events-none">
+        <!-- Animated desk lamp glow -->
+        <div class="absolute bottom-[15%] left-[5%] md:left-[8%] floating-slow">
+            <div class="bg-gray-800/30 backdrop-blur-sm p-3 rounded-2xl shadow-2xl flex gap-3 items-center border border-white/10">
+                <i class="fas fa-laptop-code text-3xl text-cyan-300"></i>
+                <div class="w-16 h-8 bg-white/10 rounded-md animate-pulse"></div>
+            </div>
+        </div>
+        <!-- Floating files & tax reports -->
+        <div class="absolute top-[25%] right-[6%] md:right-[10%] floating-icon">
+            <div class="bg-white/10 backdrop-blur-md rounded-xl p-3 shadow-lg border border-white/20">
+                <i class="fas fa-file-alt text-2xl text-white"></i>
+                <div class="text-white text-[10px] mt-1">IT Returns</div>
+            </div>
+        </div>
+        <div class="absolute bottom-[40%] left-[12%] floating-slow" style="animation-duration: 9s;">
+            <div class="bg-gradient-to-br from-cyan-800/30 to-blue-800/30 p-3 rounded-2xl backdrop-blur-md border border-cyan-400/30">
+                <i class="fas fa-chart-simple text-white text-xl"></i>
+            </div>
+        </div>
+        <!-- floating certificates -->
+        <div class="absolute top-[45%] left-[7%] md:left-[12%] floating-icon" style="animation-delay: 0.8s;">
+            <div class="bg-white/20 backdrop-blur-sm rounded-xl p-2 flex items-center gap-2 shadow-md">
+                <i class="fas fa-certificate text-yellow-300"></i>
+                <span class="text-white text-[11px] font-semibold">GSTP Certified</span>
+            </div>
+        </div>
+        <div class="absolute bottom-[25%] right-[12%] floating-slow">
+            <div class="bg-white/10 backdrop-blur-md rounded-full p-2 w-14 h-14 flex items-center justify-center border border-white/20">
+                <i class="fas fa-users text-cyan-300 text-xl"></i>
+            </div>
+        </div>
+        <!-- Animated file stack -->
+        <div class="absolute top-[15%] left-[18%] hidden md:flex flex-col gap-1 floating-icon">
+            <div class="bg-gray-700/50 w-12 h-3 rounded-sm"></div>
+            <div class="bg-cyan-600/50 w-12 h-3 rounded-sm"></div>
+            <div class="bg-blue-500/50 w-12 h-3 rounded-sm"></div>
+        </div>
+        <!-- business silhouette abstract shape -->
+        <div class="absolute bottom-[8%] right-[5%] opacity-20">
+            <i class="fas fa-user-tie text-8xl text-white"></i>
+        </div>
+    </div>
+
+    <div class="container mx-auto px-4 relative z-20 text-center">
+        <div class="max-w-4xl mx-auto reveal-on-scroll">
+            <span class="inline-block px-5 py-1.5 bg-white/10 backdrop-blur-sm text-cyan-200 rounded-full text-sm font-semibold tracking-wide mb-5 border border-white/20">~ Since 2010 ~</span>
+            <h1 class="text-5xl md:text-6xl font-extrabold text-white leading-tight mb-5">
+                Experienced Tax Professionals
+            </h1>
+            <p class="text-xl md:text-2xl text-blue-100 max-w-2xl mx-auto font-light">
+                Dedicated to Accuracy, Growth & Client Success
+            </p>
+            <div class="flex flex-wrap gap-5 justify-center mt-10">
+                <a href="contact.html" class="bg-white text-cyan-800 px-7 py-3 rounded-full font-bold shadow-xl hover:shadow-2xl transition flex items-center gap-2">Meet Our Experts <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </div>
+    <!-- subtle wave bottom -->
+    <div class="absolute bottom-0 left-0 w-full h-12 bg-gradient-to-t from-white/10 to-transparent"></div>
+</div>
+
+<!-- Client background / founder profile (original about section but upgraded) -->
+<section class="py-20 bg-white">
+    <div class="container mx-auto px-4">
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+            <div><img src="https://placehold.co/600x500/1e4a6e/white?text=S.+Abdul+Rahman+MCom+GSTP" alt="S. Abdul Rahman" class="rounded-2xl shadow-2xl w-full"></div>
+            <div>
+                <h2 class="text-3xl font-bold mb-4">S. Abdul Rahman, M.Com., GSTP</h2>
+                <p class="text-cyan-600 font-semibold mb-4">Founder & Principal Consultant</p>
+                <p class="text-gray-600 mb-6">With over 15 years of dedicated experience in GST and Income Tax consultancy, Mr. Abdul Rahman has established SR Associates as a beacon of trust and excellence in Coimbatore.</p>
+                <div class="space-y-3">
+                    <div class="flex items-center gap-3"><i class="fas fa-graduation-cap text-cyan-600"></i><span>Master of Commerce (M.Com)</span></div>
+                    <div class="flex items-center gap-3"><i class="fas fa-certificate text-cyan-600"></i><span>Certified GST Practitioner (GSTP)</span></div>
+                    <div class="flex items-center gap-3"><i class="fas fa-trophy text-cyan-600"></i><span>15+ Years of Experience</span></div>
+                    <div class="flex items-center gap-3"><i class="fas fa-users text-cyan-600"></i><span>1000+ Happy Clients</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
 <script>
+    // Mobile menu toggle
     document.getElementById('menuBtn').addEventListener('click', function() {
         document.getElementById('mobileMenu').classList.toggle('hidden');
     });
 
+    // services data
     const services = [
         {icon:"fa-file-invoice-dollar", title:"GST Registration", desc:"Seamless GST registration for businesses", link:"gst-registration.html", color:"from-purple-500 to-pink-500"},
         {icon:"fa-chart-line", title:"GST Returns Monthly Filing", desc:"Monthly GST return filing and auditing", link:"gst-return-filing.html", color:"from-blue-500 to-cyan-500"},
@@ -176,23 +451,27 @@
         {icon:"fa-signature", title:"Digital Signature (DSC)", desc:"Digital signature certificate", link:"digital-signature.html", color:"from-gray-500 to-slate-500"}
     ];
 
-    document.getElementById('servicesGrid').innerHTML = services.map(s => `
-        <div class="service-card">
-            <div class="w-16 h-16 bg-gradient-to-br ${s.color} rounded-2xl flex items-center justify-center mb-4"><i class="fas ${s.icon} text-white text-2xl"></i></div>
-            <h3 class="text-xl font-bold mb-2">${s.title}</h3>
-            <p class="text-gray-600 mb-4">${s.desc}</p>
-            <a href="${s.link}" class="text-cyan-600 font-semibold hover:underline">Learn More →</a>
-        </div>
-    `).join('');
+    const servicesGrid = document.getElementById('servicesGrid');
+    if(servicesGrid) {
+        servicesGrid.innerHTML = services.map(s => `
+            <div class="service-card group">
+                <div class="w-16 h-16 bg-gradient-to-br ${s.color} rounded-2xl flex items-center justify-center mb-4 shadow-md"><i class="fas ${s.icon} text-white text-2xl"></i></div>
+                <h3 class="text-xl font-bold mb-2">${s.title}</h3>
+                <p class="text-gray-600 mb-4">${s.desc}</p>
+                <a href="${s.link}" class="text-cyan-600 font-semibold hover:underline inline-flex items-center gap-1">Learn More →</a>
+            </div>
+        `).join('');
+    }
 
+    // Counter animation
     const counters = document.querySelectorAll('.counter');
-    const observer = new IntersectionObserver((entries) => {
+    const observerCallback = (entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 const counter = entry.target;
                 const target = parseInt(counter.getAttribute('data-target'));
                 let current = 0;
-                const increment = target / 50;
+                const increment = target / 55;
                 const updateCounter = () => {
                     current += increment;
                     if (current < target) {
@@ -206,8 +485,24 @@
                 observer.unobserve(counter);
             }
         });
-    }, { threshold: 0.5 });
+    };
+    const observer = new IntersectionObserver(observerCallback, { threshold: 0.4 });
     counters.forEach(counter => observer.observe(counter));
+
+    // scroll reveal
+    const revealElements = document.querySelectorAll('.reveal-on-scroll');
+    const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if(entry.isIntersecting) {
+                entry.target.classList.add('revealed');
+                revealObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.2, rootMargin: "0px 0px -50px 0px" });
+    revealElements.forEach(el => revealObserver.observe(el));
+
+    // ensure home hero & about hero are visible (remove old blue box)
+    console.log("Hero sections redesigned: premium animations, no blue boxes");
 </script>
 </body>
 </html>
