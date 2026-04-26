@@ -1,0 +1,33 @@
+<nav class="fixed top-0 w-full z-50 bg-white shadow-md transition-all duration-300">
+    <div class="container mx-auto px-4 py-4">
+        <div class="flex justify-between items-center">
+            <a href="index.html" class="flex items-center gap-3">
+                <div class="w-10 h-10 bg-gradient-to-br from-cyan-700 to-blue-800 rounded-xl flex items-center justify-center">
+                    <span class="text-white font-bold text-xl">SR</span>
+                </div>
+                <div>
+                    <span class="font-bold text-xl text-gray-800">SR <span class="text-cyan-700">Associates</span></span>
+                    <p class="text-xs text-gray-500">GST & Tax Consultants</p>
+                </div>
+            </a>
+            <div class="hidden md:flex items-center gap-8">
+                <a href="index.html" class="nav-link text-gray-600 hover:text-cyan-700 font-medium">Home</a>
+                <a href="about.html" class="nav-link text-gray-600 hover:text-cyan-700 font-medium">About</a>
+                <a href="services.html" class="nav-link text-gray-600 hover:text-cyan-700 font-medium">Services</a>
+                <a href="contact.html" class="nav-link text-gray-600 hover:text-cyan-700 font-medium">Contact</a>
+            </div>
+            <a href="contact.html" class="hidden md:block bg-gradient-to-r from-cyan-700 to-blue-800 text-white px-6 py-2 rounded-full font-semibold hover:shadow-lg transition">
+                Get Quote
+            </a>
+            <button id="menuBtn" class="md:hidden text-2xl text-gray-700">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+        <div id="mobileMenu" class="md:hidden hidden mt-4 space-y-3">
+            <a href="index.html" class="block py-2 text-gray-600">Home</a>
+            <a href="about.html" class="block py-2 text-gray-600">About</a>
+            <a href="services.html" class="block py-2 text-gray-600">Services</a>
+            <a href="contact.html" class="block py-2 text-gray-600">Contact</a>
+        </div>
+    </div>
+</nav>
