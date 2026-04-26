@@ -58,6 +58,9 @@
             font-weight: 600;
             transition: all 0.3s ease;
             box-shadow: 0 8px 20px rgba(27, 77, 110, 0.25);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
         }
 
         .btn-premium:hover {
@@ -72,6 +75,10 @@
             border-radius: 2rem;
             font-weight: 600;
             transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: transparent;
         }
 
         .btn-outline-premium:hover {
@@ -110,6 +117,10 @@
         .animate-float { animation: float 5s ease-in-out infinite; }
         .animate-float-delayed { animation: float 6s ease-in-out infinite 0.5s; }
         .animate-pulse-soft { animation: softPulse 4s ease-in-out infinite; }
+
+        @media (max-width: 768px) {
+            .btn-premium, .btn-outline-premium { padding: 0.75rem 1.5rem; }
+        }
     </style>
 </head>
 <body>
@@ -202,17 +213,17 @@
                 <span class="inline-block px-4 py-1.5 bg-white/10 backdrop-blur-md text-cyan-200 rounded-full text-sm font-semibold tracking-wide mb-5 border border-white/20 opacity-0 translate-y-5" id="sinceBadge">~ Since 2010 ~</span>
             </div>
             
-            <!-- Text Reveal Letter by Letter Effect -->
+            <!-- Text Reveal Effect -->
             <div class="overflow-hidden">
-                <h1 class="text-5xl md:text-6xl lg:text-7xl font-extrabold text-white leading-tight mb-5" id="aboutHeadline">
-                    <span class="inline-block opacity-0 translate-y-10">Experienced</span>
-                    <span class="inline-block opacity-0 translate-y-10 ml-3">Tax</span>
-                    <span class="inline-block opacity-0 translate-y-10 ml-3">Professionals</span>
+                <h1 class="text-5xl md:text-6xl lg:text-7xl font-extrabold text-white leading-tight mb-5">
+                    <span class="inline-block opacity-0 translate-y-10" id="word1">Experienced</span>
+                    <span class="inline-block opacity-0 translate-y-10 ml-3" id="word2">Tax</span>
+                    <span class="inline-block opacity-0 translate-y-10 ml-3" id="word3">Professionals</span>
                 </h1>
             </div>
             
             <div class="overflow-hidden">
-                <p class="text-xl md:text-2xl text-blue-100 max-w-2xl mx-auto font-light leading-relaxed opacity-0 translate-y-10" id="aboutSubheadline">
+                <p class="text-xl md:text-2xl text-blue-100 max-w-2xl mx-auto font-light leading-relaxed opacity-0 translate-y-10" id="subheadline">
                     Delivering Accuracy, Trust & Growth for Every Client
                 </p>
             </div>
@@ -244,18 +255,67 @@
     <div class="absolute bottom-0 left-0 w-full h-16 bg-gradient-to-t from-white/5 to-transparent"></div>
 </section>
 
-<!-- Mission & Vision Section -->
+<!-- Founder Profile Section -->
 <section class="py-20 bg-white">
     <div class="container mx-auto px-4">
+        <div class="max-w-5xl mx-auto">
+            <div class="text-center mb-12 reveal-on-scroll">
+                <span class="text-cyan-600 font-semibold tracking-wide uppercase text-sm">Our Founder</span>
+                <h2 class="text-4xl md:text-5xl font-bold mt-2">S. Abdul Rahman</h2>
+                <p class="text-cyan-600 font-semibold mt-2">M.Com., GSTP | Income Tax Practitioner & GST Auditor</p>
+            </div>
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="reveal-on-scroll">
+                    <div class="bg-gradient-to-br from-gray-100 to-gray-200 rounded-2xl p-8 text-center shadow-xl">
+                        <div class="w-32 h-32 bg-gradient-to-br from-cyan-700 to-blue-800 rounded-full flex items-center justify-center mx-auto shadow-lg">
+                            <i class="fas fa-user-tie text-5xl text-white"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold mt-4">S. Abdul Rahman</h3>
+                        <p class="text-cyan-600">M.Com., GSTP</p>
+                        <div class="mt-4 pt-4 border-t border-gray-200">
+                            <p class="text-gray-500 text-sm">GST ID: 332200007868GPH</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="reveal-on-scroll">
+                    <p class="text-gray-600 leading-relaxed mb-6">With over 15 years of dedicated experience in GST and Income Tax consultancy, Mr. Abdul Rahman has established SR Associates as a beacon of trust and excellence in Coimbatore. His deep understanding of tax regulations and commitment to client success has helped thousands of businesses achieve seamless compliance.</p>
+                    <div class="grid grid-cols-3 gap-4 text-center">
+                        <div class="bg-gray-50 p-3 rounded-xl">
+                            <div class="text-2xl font-bold text-cyan-700">15+</div>
+                            <p class="text-xs text-gray-500">Years</p>
+                        </div>
+                        <div class="bg-gray-50 p-3 rounded-xl">
+                            <div class="text-2xl font-bold text-cyan-700">1000+</div>
+                            <p class="text-xs text-gray-500">Clients</p>
+                        </div>
+                        <div class="bg-gray-50 p-3 rounded-xl">
+                            <div class="text-2xl font-bold text-cyan-700">98%</div>
+                            <p class="text-xs text-gray-500">Satisfaction</p>
+                        </div>
+                    </div>
+                    <div class="mt-6 space-y-2">
+                        <div class="flex items-center gap-3"><i class="fas fa-graduation-cap text-cyan-600 w-6"></i><span class="text-gray-700">Master of Commerce (M.Com)</span></div>
+                        <div class="flex items-center gap-3"><i class="fas fa-certificate text-cyan-600 w-6"></i><span class="text-gray-700">Certified GST Practitioner (GSTP)</span></div>
+                        <div class="flex items-center gap-3"><i class="fas fa-trophy text-cyan-600 w-6"></i><span class="text-gray-700">15+ Years of Experience</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Mission & Vision Section -->
+<section class="py-20 bg-gray-50">
+    <div class="container mx-auto px-4">
         <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-            <div class="gradient-border-card bg-gray-50 rounded-2xl p-8 shadow-lg reveal-on-scroll">
+            <div class="gradient-border-card bg-white rounded-2xl p-8 shadow-lg reveal-on-scroll">
                 <div class="w-16 h-16 bg-gradient-to-br from-cyan-100 to-blue-100 rounded-2xl flex items-center justify-center mb-5">
                     <i class="fas fa-bullseye text-2xl text-cyan-700"></i>
                 </div>
                 <h3 class="text-2xl font-bold mb-3">Our Mission</h3>
                 <p class="text-gray-600 leading-relaxed">To provide accurate, timely, and transparent tax consultancy services that empower businesses to focus on growth while we handle their compliance needs with utmost professionalism.</p>
             </div>
-            <div class="gradient-border-card bg-gray-50 rounded-2xl p-8 shadow-lg reveal-on-scroll">
+            <div class="gradient-border-card bg-white rounded-2xl p-8 shadow-lg reveal-on-scroll">
                 <div class="w-16 h-16 bg-gradient-to-br from-cyan-100 to-blue-100 rounded-2xl flex items-center justify-center mb-5">
                     <i class="fas fa-eye text-2xl text-cyan-700"></i>
                 </div>
@@ -267,7 +327,7 @@
 </section>
 
 <!-- Core Values -->
-<section class="py-20 bg-gray-50">
+<section class="py-20 bg-white">
     <div class="container mx-auto px-4">
         <div class="text-center mb-12 reveal-on-scroll">
             <span class="text-cyan-600 font-semibold tracking-wide uppercase text-sm">Core Values</span>
@@ -275,21 +335,21 @@
             <p class="text-gray-600 mt-4 max-w-2xl mx-auto">The principles that guide our every interaction and decision</p>
         </div>
         <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-            <div class="text-center reveal-on-scroll value-card bg-white rounded-xl p-8 shadow-md">
+            <div class="text-center reveal-on-scroll value-card bg-gray-50 rounded-xl p-8 shadow-md">
                 <div class="w-20 h-20 bg-gradient-to-br from-cyan-100 to-blue-100 rounded-full flex items-center justify-center mx-auto shadow-md">
                     <i class="fas fa-handshake text-3xl text-cyan-700"></i>
                 </div>
                 <h3 class="text-xl font-bold mt-4 mb-2">Integrity</h3>
                 <p class="text-gray-600">Honest and transparent dealings with every client, building trust that lasts generations</p>
             </div>
-            <div class="text-center reveal-on-scroll value-card bg-white rounded-xl p-8 shadow-md">
+            <div class="text-center reveal-on-scroll value-card bg-gray-50 rounded-xl p-8 shadow-md">
                 <div class="w-20 h-20 bg-gradient-to-br from-cyan-100 to-blue-100 rounded-full flex items-center justify-center mx-auto shadow-md">
                     <i class="fas fa-chart-line text-3xl text-cyan-700"></i>
                 </div>
                 <h3 class="text-xl font-bold mt-4 mb-2">Excellence</h3>
                 <p class="text-gray-600">Delivering nothing but the best tax solutions with meticulous attention to detail</p>
             </div>
-            <div class="text-center reveal-on-scroll value-card bg-white rounded-xl p-8 shadow-md">
+            <div class="text-center reveal-on-scroll value-card bg-gray-50 rounded-xl p-8 shadow-md">
                 <div class="w-20 h-20 bg-gradient-to-br from-cyan-100 to-blue-100 rounded-full flex items-center justify-center mx-auto shadow-md">
                     <i class="fas fa-clock text-3xl text-cyan-700"></i>
                 </div>
@@ -301,7 +361,7 @@
 </section>
 
 <!-- Stats Section -->
-<section class="py-20 bg-white">
+<section class="py-20 bg-gray-50">
     <div class="container mx-auto px-4">
         <div class="text-center mb-12 reveal-on-scroll">
             <span class="text-cyan-600 font-semibold tracking-wide uppercase text-sm">Our Impact</span>
@@ -309,19 +369,19 @@
             <p class="text-gray-600 mt-4 max-w-2xl mx-auto">Delivering excellence through experience and dedication</p>
         </div>
         <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center max-w-4xl mx-auto">
-            <div class="stat-card reveal-on-scroll p-4 rounded-xl hover:bg-gray-50">
+            <div class="stat-card reveal-on-scroll p-4 rounded-xl hover:bg-white transition">
                 <div class="text-5xl font-bold text-cyan-700 counter-value" data-target="15">0<span>+</span></div>
                 <p class="text-gray-600 mt-2 font-medium">Years Experience</p>
             </div>
-            <div class="stat-card reveal-on-scroll p-4 rounded-xl hover:bg-gray-50">
+            <div class="stat-card reveal-on-scroll p-4 rounded-xl hover:bg-white transition">
                 <div class="text-5xl font-bold text-cyan-700 counter-value" data-target="1000">0<span>+</span></div>
                 <p class="text-gray-600 mt-2 font-medium">Happy Clients</p>
             </div>
-            <div class="stat-card reveal-on-scroll p-4 rounded-xl hover:bg-gray-50">
+            <div class="stat-card reveal-on-scroll p-4 rounded-xl hover:bg-white transition">
                 <div class="text-5xl font-bold text-cyan-700 counter-value" data-target="98">0<span>%</span></div>
                 <p class="text-gray-600 mt-2 font-medium">Client Retention</p>
             </div>
-            <div class="stat-card reveal-on-scroll p-4 rounded-xl hover:bg-gray-50">
+            <div class="stat-card reveal-on-scroll p-4 rounded-xl hover:bg-white transition">
                 <div class="text-5xl font-bold text-cyan-700">24<span>/7</span></div>
                 <p class="text-gray-600 mt-2 font-medium">Client Support</p>
             </div>
@@ -377,14 +437,15 @@
                     <li class="flex items-center gap-3"><i class="fas fa-phone-alt text-cyan-500 w-5"></i><span>+91 94872 21863</span></li>
                     <li class="flex items-center gap-3"><i class="fas fa-phone-alt text-cyan-500 w-5"></i><span>+91 90872 63742</span></li>
                     <li class="flex items-center gap-3"><i class="fas fa-envelope text-cyan-500 w-5"></i><span>srassociateinfo.ca@gmail.com</span></li>
-                    <li class="flex items-center gap-3"><i class="fas fa-map-marker-alt text-cyan-500 w-5"></i><span>No.634 Super Complex, 1st Floor, N.H Road, Marakkadai, Coimbatore</span></li>
+                    <li class="flex items-center gap-3"><i class="fas fa-map-marker-alt text-cyan-500 w-5"></i><span>No.634 Super Complex, 1st Floor, N.H Road, Marakkadai, Coimbatore - 641001</span></li>
                 </ul>
             </div>
         </div>
-        <div class="border-t border-gray-700 mt-8 pt-6 text-center text-gray-400 text-sm">© 2026 SR Associates | Coimbatore</div>
+        <div class="border-t border-gray-700 mt-8 pt-6 text-center text-gray-400 text-sm">© 2026 SR Associates | S. Abdul Rahman, M.Com., GSTP | Coimbatore</div>
     </div>
 </footer>
 
+<!-- Floating Contact Buttons -->
 <div class="fixed bottom-6 right-6 z-50 flex flex-col gap-3">
     <a href="tel:+919487221863" class="bg-blue-600 text-white p-4 rounded-full shadow-2xl hover:bg-blue-700 transition w-14 h-14 flex items-center justify-center hover:scale-110"><i class="fas fa-phone-alt text-xl"></i></a>
     <a href="tel:+919087263742" class="bg-green-600 text-white p-4 rounded-full shadow-2xl hover:bg-green-700 transition w-14 h-14 flex items-center justify-center hover:scale-110"><i class="fas fa-phone-alt text-xl"></i></a>
@@ -400,7 +461,6 @@
     });
 
     // About Page Animations
-    // Text reveal
     gsap.to("#sinceBadge", {
         opacity: 1,
         y: 0,
@@ -409,7 +469,7 @@
         ease: "power2.out"
     });
 
-    gsap.to("#aboutHeadline span", {
+    gsap.to("#word1, #word2, #word3", {
         opacity: 1,
         y: 0,
         duration: 0.8,
@@ -418,7 +478,7 @@
         ease: "power2.out"
     });
 
-    gsap.to("#aboutSubheadline", {
+    gsap.to("#subheadline", {
         opacity: 1,
         y: 0,
         duration: 0.8,
