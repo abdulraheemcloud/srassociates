@@ -7,7 +7,6 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Three.js for 3D Animation -->
     <script type="importmap">
         {
             "imports": {
@@ -16,31 +15,16 @@
         }
     </script>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            overflow-x: hidden;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; overflow-x: hidden; }
+        html { scroll-behavior: smooth; }
 
         .reveal-on-scroll {
             opacity: 0;
             transform: translateY(30px);
             transition: all 0.8s cubic-bezier(0.2, 0.9, 0.4, 1.1);
         }
-
-        .reveal-on-scroll.revealed {
-            opacity: 1;
-            transform: translateY(0);
-        }
+        .reveal-on-scroll.revealed { opacity: 1; transform: translateY(0); }
 
         .glass-card {
             background: rgba(255, 255, 255, 0.75);
@@ -54,20 +38,13 @@
             50% { transform: translateY(-12px) rotate(2deg); }
             100% { transform: translateY(0px) rotate(0deg); }
         }
-
         @keyframes float-slow {
             0% { transform: translateY(0px) translateX(0px); }
             50% { transform: translateY(-18px) translateX(5px); }
             100% { transform: translateY(0px) translateX(0px); }
         }
-
-        .floating-icon {
-            animation: float-soft 5s ease-in-out infinite;
-        }
-
-        .floating-slow {
-            animation: float-slow 7s ease-in-out infinite;
-        }
+        .floating-icon { animation: float-soft 5s ease-in-out infinite; }
+        .floating-slow { animation: float-slow 7s ease-in-out infinite; }
 
         .hero-home {
             background: radial-gradient(circle at 10% 20%, rgba(12, 52, 78, 0.03) 0%, rgba(27, 77, 110, 0.05) 100%);
@@ -94,11 +71,7 @@
             transition: all 0.3s ease;
             box-shadow: 0 4px 14px rgba(27, 77, 110, 0.3);
         }
-
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 25px -5px rgba(27, 77, 110, 0.5);
-        }
+        .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 12px 25px -5px rgba(27, 77, 110, 0.5); }
 
         .btn-whatsapp {
             background: white;
@@ -112,12 +85,7 @@
             gap: 0.5rem;
             transition: all 0.3s ease;
         }
-
-        .btn-whatsapp:hover {
-            background: #25D366;
-            color: white;
-            border-color: #25D366;
-        }
+        .btn-whatsapp:hover { background: #25D366; color: white; border-color: #25D366; }
 
         .service-card {
             transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
@@ -126,45 +94,20 @@
             padding: 1.8rem;
             box-shadow: 0 12px 25px -10px rgba(0, 0, 0, 0.08);
         }
+        .service-card:hover { transform: translateY(-8px); box-shadow: 0 25px 35px -12px rgba(0, 0, 0, 0.2); }
 
-        .service-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 25px 35px -12px rgba(0, 0, 0, 0.2);
-        }
-
-        .counter {
-            font-size: 2.8rem;
-            font-weight: 800;
-            color: #0f2b3d;
-        }
-
-        /* 3D Canvas Container */
-        #canvas-container {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 0;
-            pointer-events: none;
-        }
+        .counter { font-size: 2.8rem; font-weight: 800; color: #0f2b3d; }
+        #canvas-container { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; }
 
         @media (max-width: 768px) {
-            .floating-icon, .floating-slow {
-                transform: scale(0.7);
-            }
-            .counter {
-                font-size: 2rem;
-            }
-            .hero-home {
-                min-height: 90vh;
-            }
+            .floating-icon, .floating-slow { transform: scale(0.7); }
+            .counter { font-size: 2rem; }
+            .hero-home { min-height: 90vh; }
         }
     </style>
 </head>
 <body>
 
-<!-- ========== NAVBAR ========== -->
 <nav class="fixed top-0 w-full z-50 bg-white/90 backdrop-blur-md shadow-md">
     <div class="container mx-auto px-4 py-4">
         <div class="flex justify-between items-center">
@@ -195,38 +138,26 @@
     </div>
 </nav>
 
-<!-- ========== HOME PAGE HERO WITH 3D ANIMATION - BLUE BOX REMOVED ========== -->
 <section class="hero-home min-h-screen flex items-center justify-center relative pt-28 pb-20">
-    <!-- 3D Canvas Container -->
     <div id="canvas-container"></div>
 
-    <!-- Floating Financial Elements -->
     <div class="floating-icon absolute top-[15%] left-[3%] md:left-[8%] z-10">
         <div class="glass-card rounded-2xl p-3 shadow-xl backdrop-blur-sm bg-white/70">
-            <i class="fas fa-chart-line text-3xl text-cyan-700"></i>
+            <i class="fas fa-file-invoice text-2xl text-cyan-700"></i>
         </div>
     </div>
-    
     <div class="floating-slow absolute top-[25%] right-[3%] md:right-[8%] z-10" style="animation-delay: 0.5s;">
         <div class="glass-card rounded-2xl p-3 shadow-xl backdrop-blur-sm bg-white/70">
-            <i class="fas fa-file-invoice-dollar text-3xl text-blue-700"></i>
+            <i class="fas fa-calculator text-2xl text-blue-700"></i>
         </div>
     </div>
-    
-    <div class="floating-icon absolute top-[40%] left-[8%] md:left-[12%] z-10" style="animation-duration: 6s;">
-        <div class="glass-card rounded-full p-4 shadow-xl bg-white/70 backdrop-blur-sm">
-            <i class="fas fa-calculator text-2xl text-teal-600"></i>
-        </div>
-    </div>
-    
-    <div class="floating-slow absolute bottom-[30%] right-[5%] md:right-[10%] z-10" style="animation-duration: 8s;">
+    <div class="floating-icon absolute bottom-[30%] right-[5%] md:right-[10%] z-10" style="animation-duration: 8s;">
         <div class="glass-card rounded-xl p-3 shadow-md bg-white/60 backdrop-blur-sm flex items-center gap-2">
-            <i class="fas fa-chart-pie text-teal-500"></i>
-            <span class="text-xs font-semibold text-gray-700">GST +82%</span>
+            <i class="fas fa-chart-line text-cyan-600"></i>
+            <span class="text-xs font-semibold text-gray-700">ITR Filing</span>
         </div>
     </div>
 
-    <!-- Main Hero Content -->
     <div class="container mx-auto px-4 relative z-20 text-center">
         <div class="max-w-4xl mx-auto reveal-on-scroll">
             <div class="inline-flex items-center gap-2 glass-card px-5 py-2 rounded-full shadow-md mb-6 backdrop-blur-sm">
@@ -244,35 +175,20 @@
             </div>
         </div>
     </div>
-
     <div class="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-cyan-500 to-transparent opacity-40"></div>
 </section>
 
-<!-- Stats Section -->
 <section class="py-16 bg-white reveal-on-scroll">
     <div class="container mx-auto px-4">
         <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-            <div>
-                <div class="counter" data-target="1250">0</div>
-                <p class="text-gray-600 mt-2 font-medium">Tax Returns Filed</p>
-            </div>
-            <div>
-                <div class="counter" data-target="890">0</div>
-                <p class="text-gray-600 mt-2 font-medium">Happy Clients</p>
-            </div>
-            <div>
-                <div class="counter" data-target="98">0</div>
-                <p class="text-gray-600 mt-2 font-medium">Client Retention %</p>
-            </div>
-            <div>
-                <div class="counter" data-target="15">0</div>
-                <p class="text-gray-600 mt-2 font-medium">Years Experience</p>
-            </div>
+            <div><div class="counter" data-target="1250">0</div><p class="text-gray-600 mt-2 font-medium">Tax Returns Filed</p></div>
+            <div><div class="counter" data-target="890">0</div><p class="text-gray-600 mt-2 font-medium">Happy Clients</p></div>
+            <div><div class="counter" data-target="98">0</div><p class="text-gray-600 mt-2 font-medium">Client Retention %</p></div>
+            <div><div class="counter" data-target="15">0</div><p class="text-gray-600 mt-2 font-medium">Years Experience</p></div>
         </div>
     </div>
 </section>
 
-<!-- Services Section -->
 <section class="py-20 bg-gray-50 reveal-on-scroll">
     <div class="container mx-auto px-4">
         <div class="text-center mb-16">
@@ -284,7 +200,6 @@
     </div>
 </section>
 
-<!-- CTA Section -->
 <section class="py-20 bg-gradient-to-r from-cyan-700 to-blue-800 text-white reveal-on-scroll">
     <div class="container mx-auto px-4 text-center">
         <h2 class="text-4xl font-bold mb-4">Ready to Simplify Your Taxes?</h2>
@@ -293,54 +208,18 @@
     </div>
 </section>
 
-<!-- Footer -->
 <footer class="bg-gray-900 text-white pt-12 pb-6">
     <div class="container mx-auto px-4">
         <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-            <div>
-                <div class="flex items-center gap-2 mb-4">
-                    <div class="w-8 h-8 bg-gradient-to-br from-cyan-700 to-blue-800 rounded-lg flex items-center justify-center">
-                        <span class="text-white font-bold text-sm">SR</span>
-                    </div>
-                    <h3 class="font-bold text-xl">SR Associates</h3>
-                </div>
-                <p class="text-gray-400 text-sm">Expert GST & Income Tax consultancy in Coimbatore since 2010.</p>
-            </div>
-            <div>
-                <h4 class="font-bold mb-4 text-lg">Quick Links</h4>
-                <ul class="space-y-2 text-gray-400">
-                    <li><a href="index.html" class="hover:text-cyan-400 transition">Home</a></li>
-                    <li><a href="about.html" class="hover:text-cyan-400 transition">About</a></li>
-                    <li><a href="services.html" class="hover:text-cyan-400 transition">Services</a></li>
-                    <li><a href="contact.html" class="hover:text-cyan-400 transition">Contact</a></li>
-                </ul>
-            </div>
-            <div>
-                <h4 class="font-bold mb-4 text-lg">Our Services</h4>
-                <ul class="space-y-2 text-gray-400 text-sm">
-                    <li>GST Registration</li>
-                    <li>GST Returns Filing</li>
-                    <li>Income Tax Filing</li>
-                    <li>Company Registration</li>
-                    <li>FSSAI License</li>
-                    <li>MSME/Udyam Registration</li>
-                </ul>
-            </div>
-            <div>
-                <h4 class="font-bold mb-4 text-lg">Contact Us</h4>
-                <ul class="space-y-3 text-gray-400 text-sm">
-                    <li class="flex items-center gap-3"><i class="fas fa-phone-alt text-cyan-500 w-5"></i><span>+91 94872 21863</span></li>
-                    <li class="flex items-center gap-3"><i class="fas fa-phone-alt text-cyan-500 w-5"></i><span>+91 90872 63742</span></li>
-                    <li class="flex items-center gap-3"><i class="fas fa-envelope text-cyan-500 w-5"></i><span>srassociateinfo.ca@gmail.com</span></li>
-                    <li class="flex items-center gap-3"><i class="fas fa-map-marker-alt text-cyan-500 w-5"></i><span>No.634 Super Complex, 1st Floor, N.H Road, Marakkadai, Coimbatore</span></li>
-                </ul>
-            </div>
+            <div><div class="flex items-center gap-2 mb-4"><div class="w-8 h-8 bg-gradient-to-br from-cyan-700 to-blue-800 rounded-lg flex items-center justify-center"><span class="text-white font-bold text-sm">SR</span></div><h3 class="font-bold text-xl">SR Associates</h3></div><p class="text-gray-400 text-sm">Expert GST & Income Tax consultancy in Coimbatore since 2010.</p></div>
+            <div><h4 class="font-bold mb-4 text-lg">Quick Links</h4><ul class="space-y-2 text-gray-400"><li><a href="index.html" class="hover:text-cyan-400 transition">Home</a></li><li><a href="about.html" class="hover:text-cyan-400 transition">About</a></li><li><a href="services.html" class="hover:text-cyan-400 transition">Services</a></li><li><a href="contact.html" class="hover:text-cyan-400 transition">Contact</a></li></ul></div>
+            <div><h4 class="font-bold mb-4 text-lg">Our Services</h4><ul class="space-y-2 text-gray-400 text-sm"><li>GST Registration</li><li>GST Returns Filing</li><li>Income Tax Filing</li><li>Company Registration</li><li>FSSAI License</li><li>MSME/Udyam Registration</li></ul></div>
+            <div><h4 class="font-bold mb-4 text-lg">Contact Us</h4><ul class="space-y-3 text-gray-400 text-sm"><li class="flex items-center gap-3"><i class="fas fa-phone-alt text-cyan-500 w-5"></i><span>+91 94872 21863</span></li><li class="flex items-center gap-3"><i class="fas fa-phone-alt text-cyan-500 w-5"></i><span>+91 90872 63742</span></li><li class="flex items-center gap-3"><i class="fas fa-envelope text-cyan-500 w-5"></i><span>srassociateinfo.ca@gmail.com</span></li><li class="flex items-center gap-3"><i class="fas fa-map-marker-alt text-cyan-500 w-5"></i><span>No.634 Super Complex, 1st Floor, N.H Road, Marakkadai, Coimbatore</span></li></ul></div>
         </div>
         <div class="border-t border-gray-700 mt-8 pt-6 text-center text-gray-400 text-sm">© 2026 SR Associates | Coimbatore</div>
     </div>
 </footer>
 
-<!-- Floating Contact Buttons -->
 <div class="fixed bottom-6 right-6 z-50 flex flex-col gap-3">
     <a href="tel:+919487221863" class="bg-blue-600 text-white p-4 rounded-full shadow-2xl hover:bg-blue-700 transition w-14 h-14 flex items-center justify-center hover:scale-110"><i class="fas fa-phone-alt text-xl"></i></a>
     <a href="tel:+919087263742" class="bg-green-600 text-white p-4 rounded-full shadow-2xl hover:bg-green-700 transition w-14 h-14 flex items-center justify-center hover:scale-110"><i class="fas fa-phone-alt text-xl"></i></a>
@@ -350,14 +229,13 @@
 <script type="module">
     import * as THREE from 'three';
 
-    // Setup 3D Scene
     const container = document.getElementById('canvas-container');
     const scene = new THREE.Scene();
     scene.background = null;
-    scene.fog = new THREE.FogExp2(0x0a2a3a, 0.008);
+    scene.fog = new THREE.FogExp2(0x0a2a3a, 0.006);
 
     const camera = new THREE.PerspectiveCamera(45, container.clientWidth / container.clientHeight, 0.1, 1000);
-    camera.position.set(0, 2, 8);
+    camera.position.set(0, 1.5, 7);
     camera.lookAt(0, 0, 0);
 
     const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
@@ -368,134 +246,225 @@
     // Lighting
     const ambientLight = new THREE.AmbientLight(0x404060);
     scene.add(ambientLight);
-    
-    const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
-    directionalLight.position.set(5, 10, 7);
-    scene.add(directionalLight);
-    
-    const backLight = new THREE.PointLight(0x2c7da0, 0.5);
-    backLight.position.set(0, 2, -5);
-    scene.add(backLight);
-    
-    const fillLight = new THREE.PointLight(0x4a90e2, 0.3);
-    fillLight.position.set(3, 1, 4);
+    const mainLight = new THREE.DirectionalLight(0xffffff, 1);
+    mainLight.position.set(5, 10, 7);
+    scene.add(mainLight);
+    const fillLight = new THREE.PointLight(0x2c7da0, 0.4);
+    fillLight.position.set(0, 2, 3);
     scene.add(fillLight);
+    const backLight = new THREE.PointLight(0x4a90e2, 0.3);
+    backLight.position.set(0, 1, -5);
+    scene.add(backLight);
 
-    // Central Rotating GST Coin/Disc
-    const coinGeometry = new THREE.CylinderGeometry(1.2, 1.2, 0.15, 64);
-    const coinMaterial = new THREE.MeshStandardMaterial({ 
-        color: 0x2c7da0, 
-        metalness: 0.85, 
-        roughness: 0.25,
-        emissive: 0x0a2a3a,
-        emissiveIntensity: 0.3
-    });
-    const coin = new THREE.Mesh(coinGeometry, coinMaterial);
-    coin.position.y = 0.5;
-    scene.add(coin);
-
-    // Ring around coin
-    const ringGeometry = new THREE.TorusGeometry(1.3, 0.05, 64, 200);
-    const ringMaterial = new THREE.MeshStandardMaterial({ color: 0xffd700, metalness: 0.9, roughness: 0.1 });
-    const ring = new THREE.Mesh(ringGeometry, ringMaterial);
-    ring.rotation.x = Math.PI / 2;
-    ring.position.y = 0.5;
-    scene.add(ring);
-
-    // Floating GST Text
-    const textCanvas = document.createElement('canvas');
-    const ctx = textCanvas.getContext('2d');
-    textCanvas.width = 512;
-    textCanvas.height = 512;
-    ctx.fillStyle = '#1a4a6e';
-    ctx.fillRect(0, 0, 512, 512);
-    ctx.font = 'Bold 80px "Inter"';
-    ctx.fillStyle = '#ffffff';
-    ctx.textAlign = 'center';
-    ctx.textBaseline = 'middle';
-    ctx.fillText('GST', 256, 256);
-    ctx.font = '40px "Inter"';
-    ctx.fillStyle = '#ffd700';
-    ctx.fillText('Tax', 256, 380);
+    // ========== TAX CONSULTANT 3D SCENE ==========
     
-    const textTexture = new THREE.CanvasTexture(textCanvas);
-    const textPlaneGeo = new THREE.PlaneGeometry(1.8, 1.8);
-    const textMaterial = new THREE.MeshStandardMaterial({ map: textTexture, side: THREE.DoubleSide, transparent: true });
-    const textPlane = new THREE.Mesh(textPlaneGeo, textMaterial);
-    textPlane.position.set(0, 0.5, 0.85);
-    scene.add(textPlane);
-
-    // Floating Number Cubes
-    const digits = ['1', '5', 'G', 'S', 'T'];
-    const digitCubes = [];
-    const positions = [
-        { x: -1.8, y: 1.2, z: -0.5 },
-        { x: 1.8, y: 1.2, z: -0.5 },
-        { x: -1.5, y: -0.8, z: -0.8 },
-        { x: 1.5, y: -0.8, z: -0.8 },
-        { x: 0, y: -1.2, z: -0.3 }
+    // 1. Floating Tax Documents (rotating papers)
+    const documents = [];
+    const docColors = [0x2c7da0, 0x1b4d6e, 0x3a8fb0, 0x5dade2];
+    const docPositions = [
+        { x: -1.5, y: 1.2, z: -0.8, rotY: 0.5 },
+        { x: 1.5, y: 1.2, z: -0.8, rotY: -0.4 },
+        { x: -1.2, y: -0.5, z: -1, rotY: 0.3 },
+        { x: 1.2, y: -0.5, z: -1, rotY: -0.3 }
     ];
     
-    digits.forEach((digit, i) => {
+    docPositions.forEach((pos, i) => {
+        const geo = new THREE.BoxGeometry(0.9, 1.2, 0.05);
+        const mat = new THREE.MeshStandardMaterial({ color: docColors[i % docColors.length], metalness: 0.2, roughness: 0.5 });
+        const doc = new THREE.Mesh(geo, mat);
+        doc.position.set(pos.x, pos.y, pos.z);
+        doc.userData = { speedY: 0.005, speedRot: pos.rotY, origY: pos.y };
+        scene.add(doc);
+        documents.push(doc);
+        
+        // Add lines on document (like text)
+        const lineMat = new THREE.MeshStandardMaterial({ color: 0xffd700 });
+        for (let j = 0; j < 3; j++) {
+            const lineGeo = new THREE.BoxGeometry(0.6, 0.03, 0.02);
+            const line = new THREE.Mesh(lineGeo, lineMat);
+            line.position.set(0, -0.3 + j * 0.25, 0.04);
+            doc.add(line);
+        }
+    });
+    
+    // 2. Central Calculator / Tax Tool
+    const calcGroup = new THREE.Group();
+    const calcBaseGeo = new THREE.BoxGeometry(1.2, 0.8, 0.15);
+    const calcMat = new THREE.MeshStandardMaterial({ color: 0x1a3a4a, metalness: 0.7, roughness: 0.3 });
+    const calculator = new THREE.Mesh(calcBaseGeo, calcMat);
+    calculator.position.y = 0;
+    calcGroup.add(calculator);
+    
+    // Buttons on calculator
+    const btnMat = new THREE.MeshStandardMaterial({ color: 0xffd700, metalness: 0.5 });
+    const btnPositions = [[-0.4, 0.2, 0.09], [0, 0.2, 0.09], [0.4, 0.2, 0.09], [-0.4, -0.1, 0.09], [0, -0.1, 0.09], [0.4, -0.1, 0.09]];
+    btnPositions.forEach(pos => {
+        const btnGeo = new THREE.BoxGeometry(0.25, 0.15, 0.05);
+        const btn = new THREE.Mesh(btnGeo, btnMat);
+        btn.position.set(pos[0], pos[1], pos[2]);
+        calcGroup.add(btn);
+    });
+    
+    // Screen
+    const screenGeo = new THREE.BoxGeometry(0.8, 0.25, 0.03);
+    const screenMat = new THREE.MeshStandardMaterial({ color: 0x0a2a3a, emissive: 0x0a2a3a, emissiveIntensity: 0.5 });
+    const screen = new THREE.Mesh(screenGeo, screenMat);
+    screen.position.set(0, 0.45, 0.1);
+    calcGroup.add(screen);
+    
+    calcGroup.position.set(0, -0.3, 0.5);
+    scene.add(calcGroup);
+    
+    // 3. Rotating GST Tax Ring with India Map vibe
+    const ringGeo = new THREE.TorusGeometry(1.1, 0.04, 64, 200);
+    const ringMatGold = new THREE.MeshStandardMaterial({ color: 0xffd700, metalness: 0.9, emissive: 0x442200, emissiveIntensity: 0.2 });
+    const mainRing = new THREE.Mesh(ringGeo, ringMatGold);
+    mainRing.rotation.x = Math.PI / 2 + 0.3;
+    mainRing.position.y = 0.2;
+    scene.add(mainRing);
+    
+    const ringGeo2 = new THREE.TorusGeometry(1.3, 0.03, 64, 200);
+    const ringMatBlue = new THREE.MeshStandardMaterial({ color: 0x2c7da0, metalness: 0.8 });
+    const outerRing = new THREE.Mesh(ringGeo2, ringMatBlue);
+    outerRing.rotation.x = Math.PI / 2 - 0.2;
+    outerRing.position.y = -0.1;
+    scene.add(outerRing);
+    
+    // 4. Floating Rupee/Currency symbols
+    const rupeeIcons = [];
+    const rupeePos = [
+        { x: -2, y: 0.5, z: -0.5 }, { x: 2, y: 0.5, z: -0.5 },
+        { x: -1.8, y: -0.8, z: 0.2 }, { x: 1.8, y: -0.8, z: 0.2 },
+        { x: 0, y: 1.5, z: -1 }
+    ];
+    
+    rupeePos.forEach((pos, i) => {
         const canvas = document.createElement('canvas');
         const cctx = canvas.getContext('2d');
-        canvas.width = 256;
-        canvas.height = 256;
+        canvas.width = 128;
+        canvas.height = 128;
         cctx.fillStyle = '#1a4a6e';
-        cctx.fillRect(0, 0, 256, 256);
-        cctx.font = 'Bold 100px "Inter"';
-        cctx.fillStyle = '#ffffff';
+        cctx.fillRect(0, 0, 128, 128);
+        cctx.font = 'Bold 70px "Inter"';
+        cctx.fillStyle = '#ffd700';
         cctx.textAlign = 'center';
         cctx.textBaseline = 'middle';
-        cctx.fillText(digit, 128, 128);
-        
+        cctx.fillText('₹', 64, 64);
         const texture = new THREE.CanvasTexture(canvas);
-        const boxGeo = new THREE.BoxGeometry(0.7, 0.7, 0.7);
-        const boxMaterial = new THREE.MeshStandardMaterial({ map: texture, metalness: 0.6, roughness: 0.3 });
-        const cube = new THREE.Mesh(boxGeo, boxMaterial);
-        cube.position.set(positions[i].x, positions[i].y, positions[i].z);
-        scene.add(cube);
-        digitCubes.push(cube);
+        const planeGeo = new THREE.PlaneGeometry(0.5, 0.5);
+        const planeMat = new THREE.MeshStandardMaterial({ map: texture, side: THREE.DoubleSide, transparent: true });
+        const rupee = new THREE.Mesh(planeGeo, planeMat);
+        rupee.position.set(pos.x, pos.y, pos.z);
+        rupee.userData = { origY: pos.y, speed: 0.005 + i * 0.002 };
+        scene.add(rupee);
+        rupeeIcons.push(rupee);
     });
-
-    // Floating particles
-    const particleCount = 800;
-    const particlesGeometry = new THREE.BufferGeometry();
-    const particlesPositions = new Float32Array(particleCount * 3);
+    
+    // 5. Data Bars (representing tax growth)
+    const barGroup = new THREE.Group();
+    const barHeights = [0.6, 1.2, 0.9, 1.5, 0.7];
+    barHeights.forEach((height, i) => {
+        const barGeo = new THREE.BoxGeometry(0.25, height, 0.25);
+        const barMat = new THREE.MeshStandardMaterial({ color: 0x2c7da0, metalness: 0.3 });
+        const bar = new THREE.Mesh(barGeo, barMat);
+        bar.position.set(-1.5 + i * 0.8, height / 2 - 0.8, -1.2);
+        barGroup.add(bar);
+    });
+    scene.add(barGroup);
+    
+    // 6. Floating Percentage symbols
+    const percentIcons = [];
+    const percentPos = [[-0.8, 1.3, -0.3], [0.8, 1.3, -0.3], [-0.5, -1, -0.8], [0.5, -1, -0.8]];
+    percentPos.forEach((pos, i) => {
+        const canvas = document.createElement('canvas');
+        const cctx = canvas.getContext('2d');
+        canvas.width = 128;
+        canvas.height = 128;
+        cctx.fillStyle = '#1a4a6e';
+        cctx.fillRect(0, 0, 128, 128);
+        cctx.font = 'Bold 60px "Inter"';
+        cctx.fillStyle = '#4a90e2';
+        cctx.textAlign = 'center';
+        cctx.textBaseline = 'middle';
+        cctx.fillText('↑' + (15 + i * 5) + '%', 64, 64);
+        const texture = new THREE.CanvasTexture(canvas);
+        const planeGeo = new THREE.PlaneGeometry(0.55, 0.55);
+        const planeMat = new THREE.MeshStandardMaterial({ map: texture, side: THREE.DoubleSide, transparent: true });
+        const percent = new THREE.Mesh(planeGeo, planeMat);
+        percent.position.set(pos[0], pos[1], pos[2]);
+        percent.userData = { origY: pos[1], speed: 0.003 };
+        scene.add(percent);
+        percentIcons.push(percent);
+    });
+    
+    // 7. Particle system - floating tax data points
+    const particleCount = 400;
+    const particlesGeo = new THREE.BufferGeometry();
+    const particlesPos = new Float32Array(particleCount * 3);
     for (let i = 0; i < particleCount; i++) {
-        particlesPositions[i*3] = (Math.random() - 0.5) * 20;
-        particlesPositions[i*3+1] = (Math.random() - 0.5) * 12;
-        particlesPositions[i*3+2] = (Math.random() - 0.5) * 15 - 5;
+        particlesPos[i*3] = (Math.random() - 0.5) * 12;
+        particlesPos[i*3+1] = (Math.random() - 0.5) * 8;
+        particlesPos[i*3+2] = (Math.random() - 0.5) * 10 - 3;
     }
-    particlesGeometry.setAttribute('position', new THREE.BufferAttribute(particlesPositions, 3));
-    const particlesMaterial = new THREE.PointsMaterial({ color: 0x4a9eff, size: 0.05, transparent: true, opacity: 0.6 });
-    const particles = new THREE.Points(particlesGeometry, particlesMaterial);
+    particlesGeo.setAttribute('position', new THREE.BufferAttribute(particlesPos, 3));
+    const particleMat = new THREE.PointsMaterial({ color: 0x4a9eff, size: 0.04, transparent: true, opacity: 0.4 });
+    const particles = new THREE.Points(particlesGeo, particleMat);
     scene.add(particles);
-
+    
+    // 8. Glowing center orb (tax consultation hub)
+    const coreGlowGeo = new THREE.SphereGeometry(0.35, 32, 32);
+    const glowMat = new THREE.MeshStandardMaterial({ color: 0xffd700, emissive: 0xff6600, emissiveIntensity: 0.6 });
+    const coreGlow = new THREE.Mesh(coreGlowGeo, glowMat);
+    coreGlow.position.set(0, 0, 0.2);
+    scene.add(coreGlow);
+    
     let time = 0;
-
+    
     function animate() {
         requestAnimationFrame(animate);
         time += 0.012;
         
-        coin.rotation.y = time * 0.8;
-        coin.rotation.x = Math.sin(time * 0.5) * 0.1;
-        ring.rotation.z = time * 0.6;
-        ring.rotation.y = time * 0.4;
-        textPlane.position.z = 0.85 + Math.sin(time * 1.5) * 0.05;
-        
-        digitCubes.forEach((cube, idx) => {
-            cube.rotation.x = time * 0.5;
-            cube.rotation.y = time * 0.3;
-            cube.position.y = positions[idx].y + Math.sin(time * 1.2 + idx) * 0.08;
+        // Animate documents floating
+        documents.forEach((doc, idx) => {
+            doc.position.y = doc.userData.origY + Math.sin(time * 1.5 + idx) * 0.08;
+            doc.rotation.z = Math.sin(time * 0.8 + idx) * 0.1;
+            doc.rotation.y += doc.userData.speedRot * 0.01;
         });
         
-        particles.rotation.y = time * 0.05;
-        particles.rotation.x = Math.sin(time * 0.1) * 0.1;
+        // Animate calculator group
+        calcGroup.rotation.y = Math.sin(time * 0.5) * 0.1;
+        calcGroup.position.y = -0.3 + Math.sin(time * 1.2) * 0.03;
         
-        camera.position.x = Math.sin(time * 0.2) * 0.1;
-        camera.position.y = 2 + Math.sin(time * 0.3) * 0.05;
-        camera.lookAt(0, 0.5, 0);
+        // Rotate rings
+        mainRing.rotation.z = time * 0.4;
+        outerRing.rotation.z = -time * 0.3;
+        
+        // Animate rupee icons
+        rupeeIcons.forEach((rupee, i) => {
+            rupee.position.y = rupee.userData.origY + Math.sin(time * 1.2 + i) * 0.1;
+            rupee.rotation.z = Math.sin(time * 0.8) * 0.2;
+        });
+        
+        // Animate percent icons
+        percentIcons.forEach((pct, i) => {
+            pct.position.y = pct.userData.origY + Math.sin(time * 1.3 + i) * 0.08;
+            pct.rotation.y = time * 0.5;
+        });
+        
+        // Animate bar group
+        barGroup.position.y = Math.sin(time * 0.7) * 0.05;
+        
+        // Animate core glow
+        coreGlow.scale.setScalar(1 + Math.sin(time * 3) * 0.05);
+        
+        // Rotate particles
+        particles.rotation.y = time * 0.03;
+        particles.rotation.x = Math.sin(time * 0.1) * 0.05;
+        
+        // Camera subtle movement
+        camera.position.x = Math.sin(time * 0.15) * 0.1;
+        camera.position.y = 1.5 + Math.sin(time * 0.25) * 0.05;
+        camera.lookAt(0, 0.2, 0);
         
         renderer.render(scene, camera);
     }
