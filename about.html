@@ -7,6 +7,14 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Three.js for 3D Animation -->
+    <script type="importmap">
+        {
+            "imports": {
+                "three": "https://unpkg.com/three@0.128.0/build/three.module.js"
+            }
+        }
+    </script>
     <style>
         * {
             margin: 0;
@@ -46,27 +54,12 @@
             100% { transform: translateY(0px) translateX(0px); }
         }
 
-        @keyframes float-desk {
-            0% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-8px) rotate(1deg); }
-            100% { transform: translateY(0px) rotate(0deg); }
-        }
-
-        @keyframes pulseGlow {
-            0% { opacity: 0.3; transform: scale(0.95); }
-            100% { opacity: 0.6; transform: scale(1.05); }
-        }
-
         .floating-icon {
             animation: float-soft 5s ease-in-out infinite;
         }
 
         .floating-slow {
             animation: float-slow 7s ease-in-out infinite;
-        }
-
-        .floating-desk {
-            animation: float-desk 4s ease-in-out infinite;
         }
 
         .hero-about {
@@ -108,8 +101,19 @@
             box-shadow: 0 20px 30px -12px rgba(0, 0, 0, 0.15);
         }
 
+        /* 3D Canvas Container */
+        #canvas-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+        }
+
         @media (max-width: 768px) {
-            .floating-icon, .floating-slow, .floating-desk {
+            .floating-icon, .floating-slow {
                 transform: scale(0.7);
             }
         }
@@ -148,16 +152,13 @@
     </div>
 </nav>
 
-<!-- ========== ABOUT PAGE HERO - PROFESSIONAL CONSULTANT SCENE (Replaces Blue Box with Name) ========== -->
+<!-- ========== ABOUT PAGE HERO WITH 3D ANIMATION ========== -->
 <section class="hero-about min-h-[85vh] flex items-center justify-center relative pt-32 pb-20">
-    <!-- Animated Background Elements -->
-    <div class="absolute inset-0 overflow-hidden pointer-events-none">
-        <div class="absolute top-10 left-[10%] w-72 h-72 bg-cyan-500/5 rounded-full blur-3xl animate-pulse"></div>
-        <div class="absolute bottom-10 right-[5%] w-96 h-96 bg-blue-500/5 rounded-full blur-3xl animate-pulse" style="animation-delay: 1.5s;"></div>
-    </div>
+    <!-- 3D Canvas Container -->
+    <div id="canvas-container"></div>
 
-    <!-- Animated Desk / Workspace Elements -->
-    <div class="absolute bottom-[12%] left-[3%] md:left-[6%] floating-desk z-10">
+    <!-- Floating Elements -->
+    <div class="absolute bottom-[12%] left-[3%] md:left-[6%] floating-icon z-10">
         <div class="bg-gray-800/40 backdrop-blur-md p-3 rounded-2xl shadow-2xl flex gap-3 items-center border border-white/15">
             <i class="fas fa-laptop-code text-3xl text-cyan-300"></i>
             <div class="flex flex-col">
@@ -167,21 +168,13 @@
         </div>
     </div>
     
-    <!-- Floating Files & Tax Reports -->
-    <div class="absolute top-[20%] right-[3%] md:right-[8%] floating-icon z-10">
+    <div class="absolute top-[20%] right-[3%] md:right-[8%] floating-slow z-10">
         <div class="bg-white/10 backdrop-blur-md rounded-xl p-3 shadow-lg border border-white/20">
             <i class="fas fa-file-alt text-2xl text-white"></i>
             <div class="text-white text-[10px] mt-1 font-medium">IT Returns</div>
         </div>
     </div>
     
-    <div class="absolute top-[35%] left-[4%] md:left-[7%] floating-slow z-10" style="animation-duration: 9s;">
-        <div class="bg-gradient-to-br from-cyan-800/40 to-blue-800/40 p-3 rounded-2xl backdrop-blur-md border border-cyan-400/30">
-            <i class="fas fa-chart-line text-white text-xl"></i>
-        </div>
-    </div>
-    
-    <!-- Floating Certificates / Trust Badges -->
     <div class="absolute top-[48%] right-[5%] md:right-[10%] floating-icon z-10" style="animation-delay: 0.6s;">
         <div class="bg-white/20 backdrop-blur-md rounded-xl p-2.5 flex items-center gap-2 shadow-lg border border-white/10">
             <i class="fas fa-certificate text-yellow-300 text-lg"></i>
@@ -193,33 +186,6 @@
         <div class="bg-white/15 backdrop-blur-md rounded-xl p-2.5 flex items-center gap-2 shadow-lg border border-white/10">
             <i class="fas fa-shield-alt text-green-300 text-lg"></i>
             <span class="text-white text-[11px] font-semibold">15+ Years Trusted</span>
-        </div>
-    </div>
-    
-    <!-- Professional Business Silhouette -->
-    <div class="absolute bottom-[5%] right-[3%] opacity-15 z-0 hidden md:block">
-        <i class="fas fa-user-tie text-8xl text-white"></i>
-    </div>
-    
-    <!-- Animated File Stack -->
-    <div class="absolute top-[15%] left-[12%] hidden md:flex flex-col gap-1.5 floating-icon z-10">
-        <div class="bg-gray-600/40 w-14 h-3 rounded-sm"></div>
-        <div class="bg-cyan-500/40 w-14 h-3 rounded-sm"></div>
-        <div class="bg-blue-400/40 w-14 h-3 rounded-sm"></div>
-        <div class="bg-teal-400/40 w-10 h-3 rounded-sm"></div>
-    </div>
-    
-    <!-- Floating Calculator -->
-    <div class="absolute bottom-[40%] left-[18%] floating-icon z-10 hidden md:block" style="animation-duration: 6s;">
-        <div class="bg-white/10 backdrop-blur-md rounded-xl p-2.5 border border-white/20">
-            <i class="fas fa-calculator text-cyan-300 text-xl"></i>
-        </div>
-    </div>
-    
-    <!-- Clipboard / Checklist -->
-    <div class="absolute top-[55%] right-[15%] floating-slow z-10 hidden md:block">
-        <div class="bg-white/10 backdrop-blur-md rounded-xl p-2.5 border border-white/20">
-            <i class="fas fa-clipboard-list text-blue-300 text-lg"></i>
         </div>
     </div>
 
@@ -244,27 +210,43 @@
         </div>
     </div>
     
-    <!-- Bottom Wave -->
     <div class="absolute bottom-0 left-0 w-full h-16 bg-gradient-to-t from-white/5 to-transparent"></div>
 </section>
 
 <!-- Founder Profile Section -->
 <section class="py-20 bg-white">
     <div class="container mx-auto px-4">
-        <div class="grid md:grid-cols-2 gap-12 items-center">
-            <div class="reveal-on-scroll">
-                <img src="https://placehold.co/600x500/1e4a6e/white?text=S.+Abdul+Rahman+MCom+GSTP" alt="S. Abdul Rahman" class="rounded-2xl shadow-2xl w-full object-cover">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-12 reveal-on-scroll">
+                <span class="text-cyan-600 font-semibold tracking-wide uppercase text-sm">Our Founder</span>
+                <h2 class="text-4xl md:text-5xl font-bold mt-2">S. Abdul Rahman</h2>
+                <p class="text-cyan-600 font-semibold mt-2">M.Com., GSTP | Founder & Principal Consultant</p>
             </div>
-            <div class="reveal-on-scroll">
-                <span class="text-cyan-600 font-semibold tracking-wide uppercase text-sm">Founder</span>
-                <h2 class="text-3xl md:text-4xl font-bold mt-2 mb-3">S. Abdul Rahman, M.Com., GSTP</h2>
-                <p class="text-cyan-600 font-semibold mb-4">Founder & Principal Consultant</p>
-                <p class="text-gray-600 mb-6 leading-relaxed">With over 15 years of dedicated experience in GST and Income Tax consultancy, Mr. Abdul Rahman has established SR Associates as a beacon of trust and excellence in Coimbatore. His deep understanding of tax regulations and commitment to client success has helped thousands of businesses achieve seamless compliance.</p>
-                <div class="space-y-3 bg-gray-50 p-5 rounded-xl">
-                    <div class="flex items-center gap-3"><i class="fas fa-graduation-cap text-cyan-600 w-6"></i><span class="text-gray-700">Master of Commerce (M.Com)</span></div>
-                    <div class="flex items-center gap-3"><i class="fas fa-certificate text-cyan-600 w-6"></i><span class="text-gray-700">Certified GST Practitioner (GSTP)</span></div>
-                    <div class="flex items-center gap-3"><i class="fas fa-trophy text-cyan-600 w-6"></i><span class="text-gray-700">15+ Years of Experience</span></div>
-                    <div class="flex items-center gap-3"><i class="fas fa-users text-cyan-600 w-6"></i><span class="text-gray-700">1000+ Happy Clients</span></div>
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="reveal-on-scroll">
+                    <img src="https://placehold.co/500x500/1e4a6e/white?text=S.+Abdul+Rahman" alt="S. Abdul Rahman" class="rounded-2xl shadow-2xl w-full object-cover">
+                </div>
+                <div class="reveal-on-scroll">
+                    <p class="text-gray-600 leading-relaxed mb-6">With over 15 years of dedicated experience in GST and Income Tax consultancy, Mr. Abdul Rahman has established SR Associates as a beacon of trust and excellence in Coimbatore. His deep understanding of tax regulations and commitment to client success has helped thousands of businesses achieve seamless compliance.</p>
+                    <div class="grid grid-cols-3 gap-4 text-center">
+                        <div class="bg-gray-50 p-3 rounded-xl">
+                            <div class="text-2xl font-bold text-cyan-700">15+</div>
+                            <p class="text-xs text-gray-500">Years</p>
+                        </div>
+                        <div class="bg-gray-50 p-3 rounded-xl">
+                            <div class="text-2xl font-bold text-cyan-700">1000+</div>
+                            <p class="text-xs text-gray-500">Clients</p>
+                        </div>
+                        <div class="bg-gray-50 p-3 rounded-xl">
+                            <div class="text-2xl font-bold text-cyan-700">98%</div>
+                            <p class="text-xs text-gray-500">Satisfaction</p>
+                        </div>
+                    </div>
+                    <div class="mt-6 space-y-2">
+                        <div class="flex items-center gap-3"><i class="fas fa-graduation-cap text-cyan-600 w-6"></i><span class="text-gray-700">Master of Commerce (M.Com)</span></div>
+                        <div class="flex items-center gap-3"><i class="fas fa-certificate text-cyan-600 w-6"></i><span class="text-gray-700">Certified GST Practitioner (GSTP)</span></div>
+                        <div class="flex items-center gap-3"><i class="fas fa-trophy text-cyan-600 w-6"></i><span class="text-gray-700">15+ Years of Experience</span></div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -274,7 +256,7 @@
 <!-- Mission & Vision Section -->
 <section class="py-20 bg-gray-50">
     <div class="container mx-auto px-4">
-        <div class="grid md:grid-cols-2 gap-8">
+        <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
             <div class="bg-white rounded-2xl p-8 shadow-lg reveal-on-scroll value-card">
                 <div class="w-16 h-16 bg-gradient-to-br from-cyan-100 to-blue-100 rounded-2xl flex items-center justify-center mb-5">
                     <i class="fas fa-bullseye text-2xl text-cyan-700"></i>
@@ -293,98 +275,35 @@
     </div>
 </section>
 
-<!-- Why Choose Us Stats -->
-<section class="py-20 bg-white">
-    <div class="container mx-auto px-4">
-        <div class="text-center mb-12 reveal-on-scroll">
-            <span class="text-cyan-600 font-semibold tracking-wide uppercase text-sm">Our Impact</span>
-            <h2 class="text-4xl md:text-5xl font-bold mt-2">Numbers That Speak</h2>
-            <p class="text-gray-600 mt-4 max-w-2xl mx-auto">Delivering excellence through experience and dedication</p>
-        </div>
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-            <div class="stat-card reveal-on-scroll p-4 rounded-xl hover:bg-gray-50">
-                <div class="text-5xl font-bold text-cyan-700">15+</div>
-                <p class="text-gray-600 mt-2 font-medium">Years Experience</p>
-            </div>
-            <div class="stat-card reveal-on-scroll p-4 rounded-xl hover:bg-gray-50">
-                <div class="text-5xl font-bold text-cyan-700">1000+</div>
-                <p class="text-gray-600 mt-2 font-medium">Happy Clients</p>
-            </div>
-            <div class="stat-card reveal-on-scroll p-4 rounded-xl hover:bg-gray-50">
-                <div class="text-5xl font-bold text-cyan-700">98%</div>
-                <p class="text-gray-600 mt-2 font-medium">Client Retention</p>
-            </div>
-            <div class="stat-card reveal-on-scroll p-4 rounded-xl hover:bg-gray-50">
-                <div class="text-5xl font-bold text-cyan-700">24/7</div>
-                <p class="text-gray-600 mt-2 font-medium">Client Support</p>
-            </div>
-        </div>
-    </div>
-</section>
-
 <!-- Core Values -->
-<section class="py-20 bg-gray-50">
+<section class="py-20 bg-white">
     <div class="container mx-auto px-4">
         <div class="text-center mb-12 reveal-on-scroll">
             <span class="text-cyan-600 font-semibold tracking-wide uppercase text-sm">Core Values</span>
             <h2 class="text-4xl md:text-5xl font-bold mt-2">What Drives Us</h2>
             <p class="text-gray-600 mt-4 max-w-2xl mx-auto">The principles that guide our every interaction and decision</p>
         </div>
-        <div class="grid md:grid-cols-3 gap-8">
-            <div class="text-center reveal-on-scroll value-card bg-white rounded-xl p-8 shadow-md">
+        <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+            <div class="text-center reveal-on-scroll value-card bg-gray-50 rounded-xl p-8 shadow-md">
                 <div class="w-20 h-20 bg-gradient-to-br from-cyan-100 to-blue-100 rounded-full flex items-center justify-center mx-auto shadow-md">
                     <i class="fas fa-handshake text-3xl text-cyan-700"></i>
                 </div>
                 <h3 class="text-xl font-bold mt-4 mb-2">Integrity</h3>
                 <p class="text-gray-600">Honest and transparent dealings with every client, building trust that lasts generations</p>
             </div>
-            <div class="text-center reveal-on-scroll value-card bg-white rounded-xl p-8 shadow-md">
+            <div class="text-center reveal-on-scroll value-card bg-gray-50 rounded-xl p-8 shadow-md">
                 <div class="w-20 h-20 bg-gradient-to-br from-cyan-100 to-blue-100 rounded-full flex items-center justify-center mx-auto shadow-md">
                     <i class="fas fa-chart-line text-3xl text-cyan-700"></i>
                 </div>
                 <h3 class="text-xl font-bold mt-4 mb-2">Excellence</h3>
                 <p class="text-gray-600">Delivering nothing but the best tax solutions with meticulous attention to detail</p>
             </div>
-            <div class="text-center reveal-on-scroll value-card bg-white rounded-xl p-8 shadow-md">
+            <div class="text-center reveal-on-scroll value-card bg-gray-50 rounded-xl p-8 shadow-md">
                 <div class="w-20 h-20 bg-gradient-to-br from-cyan-100 to-blue-100 rounded-full flex items-center justify-center mx-auto shadow-md">
                     <i class="fas fa-clock text-3xl text-cyan-700"></i>
                 </div>
                 <h3 class="text-xl font-bold mt-4 mb-2">Punctuality</h3>
                 <p class="text-gray-600">On-time filing and compliance guaranteed, ensuring zero penalties for our clients</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Team Section -->
-<section class="py-20 bg-white">
-    <div class="container mx-auto px-4">
-        <div class="text-center mb-12 reveal-on-scroll">
-            <span class="text-cyan-600 font-semibold tracking-wide uppercase text-sm">Our Team</span>
-            <h2 class="text-4xl md:text-5xl font-bold mt-2">Dedicated Professionals</h2>
-            <p class="text-gray-600 mt-4 max-w-2xl mx-auto">A team of certified experts committed to your financial success</p>
-        </div>
-        <div class="grid md:grid-cols-3 gap-8">
-            <div class="text-center reveal-on-scroll">
-                <div class="w-32 h-32 bg-gradient-to-br from-cyan-700 to-blue-800 rounded-full flex items-center justify-center mx-auto shadow-lg">
-                    <i class="fas fa-user-tie text-4xl text-white"></i>
-                </div>
-                <h3 class="text-xl font-bold mt-4">S. Abdul Rahman</h3>
-                <p class="text-cyan-600">Founder & GST Practitioner</p>
-            </div>
-            <div class="text-center reveal-on-scroll">
-                <div class="w-32 h-32 bg-gradient-to-br from-cyan-700 to-blue-800 rounded-full flex items-center justify-center mx-auto shadow-lg">
-                    <i class="fas fa-user-check text-4xl text-white"></i>
-                </div>
-                <h3 class="text-xl font-bold mt-4">Senior Tax Consultant</h3>
-                <p class="text-cyan-600">Income Tax Expert</p>
-            </div>
-            <div class="text-center reveal-on-scroll">
-                <div class="w-32 h-32 bg-gradient-to-br from-cyan-700 to-blue-800 rounded-full flex items-center justify-center mx-auto shadow-lg">
-                    <i class="fas fa-user-graduate text-4xl text-white"></i>
-                </div>
-                <h3 class="text-xl font-bold mt-4">Support Team</h3>
-                <p class="text-cyan-600">Client Relations</p>
             </div>
         </div>
     </div>
@@ -453,13 +372,170 @@
     <a href="https://wa.me/919487221863" class="bg-green-500 text-white p-4 rounded-full shadow-2xl hover:bg-green-600 transition w-14 h-14 flex items-center justify-center animate-pulse hover:scale-110"><i class="fab fa-whatsapp text-2xl"></i></a>
 </div>
 
+<script type="module">
+    import * as THREE from 'three';
+
+    // Setup 3D Scene
+    const container = document.getElementById('canvas-container');
+    const scene = new THREE.Scene();
+    scene.background = null;
+    scene.fog = new THREE.FogExp2(0x0a2a3a, 0.01);
+
+    const camera = new THREE.PerspectiveCamera(45, container.clientWidth / container.clientHeight, 0.1, 1000);
+    camera.position.set(0, 2, 9);
+    camera.lookAt(0, 0, 0);
+
+    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+    renderer.setSize(container.clientWidth, container.clientHeight);
+    renderer.setClearColor(0x000000, 0);
+    container.appendChild(renderer.domElement);
+
+    // Lighting
+    const ambientLight = new THREE.AmbientLight(0x404060);
+    scene.add(ambientLight);
+    
+    const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
+    directionalLight.position.set(5, 10, 7);
+    scene.add(directionalLight);
+    
+    const backLight = new THREE.PointLight(0x2c7da0, 0.5);
+    backLight.position.set(0, 2, -6);
+    scene.add(backLight);
+
+    // Rotating 3D "TAX" Text Cube
+    const group = new THREE.Group();
+    
+    // Central cube with GST text
+    const canvas = document.createElement('canvas');
+    const ctx = canvas.getContext('2d');
+    canvas.width = 512;
+    canvas.height = 512;
+    ctx.fillStyle = '#1a4a6e';
+    ctx.fillRect(0, 0, 512, 512);
+    ctx.font = 'Bold 70px "Inter"';
+    ctx.fillStyle = '#ffd700';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText('GST', 256, 220);
+    ctx.font = '40px "Inter"';
+    ctx.fillStyle = '#ffffff';
+    ctx.fillText('TAX', 256, 320);
+    ctx.font = '20px "Inter"';
+    ctx.fillStyle = '#2c7da0';
+    ctx.fillText('CONSULTANT', 256, 400);
+    
+    const texture = new THREE.CanvasTexture(canvas);
+    const boxGeo = new THREE.BoxGeometry(1.5, 1.5, 1.5);
+    const boxMaterial = new THREE.MeshStandardMaterial({ map: texture, metalness: 0.7, roughness: 0.2 });
+    const centerCube = new THREE.Mesh(boxGeo, boxMaterial);
+    group.add(centerCube);
+    
+    // Floating smaller cubes around
+    const smallCubes = [];
+    const colors = [0x2c7da0, 0x4a90e2, 0x5dade2, 0x85c1e9, 0x1a4a6e];
+    const positions = [
+        { x: 1.2, y: 1.2, z: 0.5, speed: 0.01 },
+        { x: -1.2, y: 1.2, z: 0.5, speed: -0.008 },
+        { x: 1.2, y: -1.2, z: 0.5, speed: 0.012 },
+        { x: -1.2, y: -1.2, z: 0.5, speed: -0.01 },
+        { x: 1.5, y: 0, z: 0.8, speed: 0.007 },
+        { x: -1.5, y: 0, z: 0.8, speed: -0.009 }
+    ];
+    
+    positions.forEach((pos, i) => {
+        const smallGeo = new THREE.BoxGeometry(0.4, 0.4, 0.4);
+        const smallMat = new THREE.MeshStandardMaterial({ color: colors[i % colors.length], metalness: 0.8, roughness: 0.2 });
+        const smallCube = new THREE.Mesh(smallGeo, smallMat);
+        smallCube.position.set(pos.x, pos.y, pos.z);
+        smallCube.userData = { speed: pos.speed, axis: i % 3 };
+        group.add(smallCube);
+        smallCubes.push(smallCube);
+    });
+    
+    scene.add(group);
+    
+    // Floating particles
+    const particleCount = 600;
+    const particlesGeometry = new THREE.BufferGeometry();
+    const particlesPositions = new Float32Array(particleCount * 3);
+    for (let i = 0; i < particleCount; i++) {
+        particlesPositions[i*3] = (Math.random() - 0.5) * 18;
+        particlesPositions[i*3+1] = (Math.random() - 0.5) * 10;
+        particlesPositions[i*3+2] = (Math.random() - 0.5) * 12 - 4;
+    }
+    particlesGeometry.setAttribute('position', new THREE.BufferAttribute(particlesPositions, 3));
+    const particlesMaterial = new THREE.PointsMaterial({ color: 0x5dade2, size: 0.04, transparent: true, opacity: 0.5 });
+    const particles = new THREE.Points(particlesGeometry, particlesMaterial);
+    scene.add(particles);
+    
+    // Rotating rings
+    const ringGeo = new THREE.TorusGeometry(1.2, 0.04, 64, 200);
+    const ringMat = new THREE.MeshStandardMaterial({ color: 0xffd700, metalness: 0.9 });
+    const ring1 = new THREE.Mesh(ringGeo, ringMat);
+    ring1.position.y = 0.2;
+    scene.add(ring1);
+    
+    const ringGeo2 = new THREE.TorusGeometry(1.6, 0.03, 64, 200);
+    const ringMat2 = new THREE.MeshStandardMaterial({ color: 0x2c7da0, metalness: 0.8 });
+    const ring2 = new THREE.Mesh(ringGeo2, ringMat2);
+    ring2.position.y = -0.3;
+    scene.add(ring2);
+    
+    let time = 0;
+    
+    function animate() {
+        requestAnimationFrame(animate);
+        time += 0.015;
+        
+        group.rotation.y = time * 0.5;
+        group.rotation.x = Math.sin(time * 0.3) * 0.2;
+        group.rotation.z = Math.cos(time * 0.2) * 0.1;
+        
+        smallCubes.forEach((cube, idx) => {
+            cube.rotation.x += 0.02;
+            cube.rotation.y += 0.03;
+            cube.position.z = 0.8 + Math.sin(time * 1.5 + idx) * 0.1;
+        });
+        
+        ring1.rotation.x = Math.PI / 2;
+        ring1.rotation.z = time * 0.6;
+        ring2.rotation.x = Math.PI / 2 + 0.3;
+        ring2.rotation.z = -time * 0.4;
+        
+        particles.rotation.y = time * 0.04;
+        particles.rotation.x = Math.sin(time * 0.1) * 0.05;
+        
+        camera.position.x = Math.sin(time * 0.15) * 0.15;
+        camera.position.y = 2 + Math.sin(time * 0.25) * 0.08;
+        camera.lookAt(0, 0, 0);
+        
+        renderer.render(scene, camera);
+    }
+    
+    animate();
+    
+    window.addEventListener('resize', () => {
+        const width = container.clientWidth;
+        const height = container.clientHeight;
+        camera.aspect = width / height;
+        camera.updateProjectionMatrix();
+        renderer.setSize(width, height);
+    });
+    
+    setTimeout(() => {
+        const width = container.clientWidth;
+        const height = container.clientHeight;
+        camera.aspect = width / height;
+        camera.updateProjectionMatrix();
+        renderer.setSize(width, height);
+    }, 100);
+</script>
+
 <script>
-    // Mobile menu toggle
     document.getElementById('menuBtn').addEventListener('click', function() {
         document.getElementById('mobileMenu').classList.toggle('hidden');
     });
 
-    // Scroll reveal animation
     const revealElements = document.querySelectorAll('.reveal-on-scroll');
     const revealObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -468,7 +544,7 @@
                 revealObserver.unobserve(entry.target);
             }
         });
-    }, { threshold: 0.2, rootMargin: "0px 0px -50px 0px" });
+    }, { threshold: 0.2 });
     revealElements.forEach(el => revealObserver.observe(el));
 </script>
 </body>
