@@ -195,7 +195,7 @@
     </div>
 </nav>
 
-<!-- ========== HOME PAGE HERO WITH 3D ANIMATION ========== -->
+<!-- ========== HOME PAGE HERO WITH 3D ANIMATION - BLUE BOX REMOVED ========== -->
 <section class="hero-home min-h-screen flex items-center justify-center relative pt-28 pb-20">
     <!-- 3D Canvas Container -->
     <div id="canvas-container"></div>
@@ -284,43 +284,6 @@
     </div>
 </section>
 
-<!-- Founder Section (Moved from Why Choose) -->
-<section class="py-20 bg-white reveal-on-scroll">
-    <div class="container mx-auto px-4">
-        <div class="max-w-4xl mx-auto text-center">
-            <div class="inline-block p-1 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full mb-6">
-                <div class="bg-white rounded-full px-6 py-2">
-                    <span class="text-cyan-700 font-semibold">Our Founder</span>
-                </div>
-            </div>
-            <div class="grid md:grid-cols-2 gap-8 items-center">
-                <div>
-                    <img src="https://placehold.co/400x400/1e4a6e/white?text=S.+Abdul+Rahman" alt="S. Abdul Rahman" class="rounded-2xl shadow-2xl w-full object-cover">
-                </div>
-                <div class="text-left">
-                    <h2 class="text-3xl font-bold mb-2">S. Abdul Rahman</h2>
-                    <p class="text-cyan-600 font-semibold mb-4">M.Com., GSTP | Founder & Principal Consultant</p>
-                    <p class="text-gray-600 leading-relaxed">With over 15 years of dedicated experience in GST and Income Tax consultancy, Mr. Abdul Rahman has established SR Associates as a beacon of trust and excellence in Coimbatore.</p>
-                    <div class="mt-6 flex gap-4">
-                        <div class="text-center">
-                            <div class="text-2xl font-bold text-cyan-700">15+</div>
-                            <p class="text-xs text-gray-500">Years</p>
-                        </div>
-                        <div class="text-center">
-                            <div class="text-2xl font-bold text-cyan-700">1000+</div>
-                            <p class="text-xs text-gray-500">Clients</p>
-                        </div>
-                        <div class="text-center">
-                            <div class="text-2xl font-bold text-cyan-700">98%</div>
-                            <p class="text-xs text-gray-500">Satisfaction</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
 <!-- CTA Section -->
 <section class="py-20 bg-gradient-to-r from-cyan-700 to-blue-800 text-white reveal-on-scroll">
     <div class="container mx-auto px-4 text-center">
@@ -373,7 +336,7 @@
                 </ul>
             </div>
         </div>
-        <div class="border-t border-gray-700 mt-8 pt-6 text-center text-gray-400 text-sm">© 2026 SR Associates | S. Abdul Rahman, M.Com., GSTP | Coimbatore</div>
+        <div class="border-t border-gray-700 mt-8 pt-6 text-center text-gray-400 text-sm">© 2026 SR Associates | Coimbatore</div>
     </div>
 </footer>
 
@@ -418,9 +381,6 @@
     fillLight.position.set(3, 1, 4);
     scene.add(fillLight);
 
-    // Create 3D Objects
-    const objects = [];
-
     // Central Rotating GST Coin/Disc
     const coinGeometry = new THREE.CylinderGeometry(1.2, 1.2, 0.15, 64);
     const coinMaterial = new THREE.MeshStandardMaterial({ 
@@ -433,7 +393,6 @@
     const coin = new THREE.Mesh(coinGeometry, coinMaterial);
     coin.position.y = 0.5;
     scene.add(coin);
-    objects.push(coin);
 
     // Ring around coin
     const ringGeometry = new THREE.TorusGeometry(1.3, 0.05, 64, 200);
@@ -442,14 +401,13 @@
     ring.rotation.x = Math.PI / 2;
     ring.position.y = 0.5;
     scene.add(ring);
-    objects.push(ring);
 
-    // Floating GST Text (using a group)
+    // Floating GST Text
     const textCanvas = document.createElement('canvas');
     const ctx = textCanvas.getContext('2d');
     textCanvas.width = 512;
     textCanvas.height = 512;
-    ctx.fillStyle = '#2c7da0';
+    ctx.fillStyle = '#1a4a6e';
     ctx.fillRect(0, 0, 512, 512);
     ctx.font = 'Bold 80px "Inter"';
     ctx.fillStyle = '#ffffff';
@@ -466,9 +424,8 @@
     const textPlane = new THREE.Mesh(textPlaneGeo, textMaterial);
     textPlane.position.set(0, 0.5, 0.85);
     scene.add(textPlane);
-    objects.push(textPlane);
 
-    // Floating Number Cubes (representing tax digits)
+    // Floating Number Cubes
     const digits = ['1', '5', 'G', 'S', 'T'];
     const digitCubes = [];
     const positions = [
@@ -499,10 +456,9 @@
         cube.position.set(positions[i].x, positions[i].y, positions[i].z);
         scene.add(cube);
         digitCubes.push(cube);
-        objects.push(cube);
     });
 
-    // Floating particles (stars/dust)
+    // Floating particles
     const particleCount = 800;
     const particlesGeometry = new THREE.BufferGeometry();
     const particlesPositions = new Float32Array(particleCount * 3);
@@ -515,80 +471,28 @@
     const particlesMaterial = new THREE.PointsMaterial({ color: 0x4a9eff, size: 0.05, transparent: true, opacity: 0.6 });
     const particles = new THREE.Points(particlesGeometry, particlesMaterial);
     scene.add(particles);
-    objects.push(particles);
 
-    // Small floating orbs
-    const orbs = [];
-    for (let i = 0; i < 30; i++) {
-        const orbGeo = new THREE.SphereGeometry(0.08, 16, 16);
-        const orbMat = new THREE.MeshStandardMaterial({ color: 0x2c7da0, emissive: 0x1a4a6e, emissiveIntensity: 0.5 });
-        const orb = new THREE.Mesh(orbGeo, orbMat);
-        orb.userData = {
-            speedX: (Math.random() - 0.5) * 0.01,
-            speedY: (Math.random() - 0.5) * 0.01,
-            rangeX: (Math.random() - 0.5) * 5,
-            rangeY: (Math.random() - 0.5) * 4,
-            rangeZ: (Math.random() - 0.5) * 3,
-            offsetX: (Math.random() - 0.5) * 4,
-            offsetY: (Math.random() - 0.5) * 3,
-            offsetZ: (Math.random() - 0.5) * 2
-        };
-        orb.position.x = orb.userData.offsetX;
-        orb.position.y = orb.userData.offsetY + 0.5;
-        orb.position.z = orb.userData.offsetZ - 1;
-        scene.add(orb);
-        orbs.push(orb);
-        objects.push(orb);
-    }
-
-    // Animation variables
     let time = 0;
-    let ringRotation = 0;
 
-    // Handle resize
-    window.addEventListener('resize', onWindowResize, false);
-    function onWindowResize() {
-        const width = container.clientWidth;
-        const height = container.clientHeight;
-        camera.aspect = width / height;
-        camera.updateProjectionMatrix();
-        renderer.setSize(width, height);
-    }
-
-    // Animation Loop
     function animate() {
         requestAnimationFrame(animate);
         time += 0.012;
         
-        // Rotate central coin
         coin.rotation.y = time * 0.8;
         coin.rotation.x = Math.sin(time * 0.5) * 0.1;
-        
-        // Rotate ring
         ring.rotation.z = time * 0.6;
         ring.rotation.y = time * 0.4;
-        
-        // Float text plane
         textPlane.position.z = 0.85 + Math.sin(time * 1.5) * 0.05;
         
-        // Animate digit cubes
         digitCubes.forEach((cube, idx) => {
             cube.rotation.x = time * 0.5;
             cube.rotation.y = time * 0.3;
             cube.position.y = positions[idx].y + Math.sin(time * 1.2 + idx) * 0.08;
         });
         
-        // Animate orbs
-        orbs.forEach(orb => {
-            orb.position.x = orb.userData.offsetX + Math.sin(time * orb.userData.speedX * 10) * 0.3;
-            orb.position.y = orb.userData.offsetY + 0.5 + Math.cos(time * orb.userData.speedY * 8) * 0.3;
-        });
-        
-        // Rotate particles slowly
         particles.rotation.y = time * 0.05;
         particles.rotation.x = Math.sin(time * 0.1) * 0.1;
         
-        // Slight camera movement
         camera.position.x = Math.sin(time * 0.2) * 0.1;
         camera.position.y = 2 + Math.sin(time * 0.3) * 0.05;
         camera.lookAt(0, 0.5, 0);
@@ -598,17 +502,28 @@
     
     animate();
     
-    // Initial resize
-    setTimeout(() => onWindowResize(), 100);
+    window.addEventListener('resize', () => {
+        const width = container.clientWidth;
+        const height = container.clientHeight;
+        camera.aspect = width / height;
+        camera.updateProjectionMatrix();
+        renderer.setSize(width, height);
+    });
+    
+    setTimeout(() => {
+        const width = container.clientWidth;
+        const height = container.clientHeight;
+        camera.aspect = width / height;
+        camera.updateProjectionMatrix();
+        renderer.setSize(width, height);
+    }, 100);
 </script>
 
 <script>
-    // Mobile menu toggle
     document.getElementById('menuBtn').addEventListener('click', function() {
         document.getElementById('mobileMenu').classList.toggle('hidden');
     });
 
-    // Services data
     const services = [
         {icon:"fa-file-invoice-dollar", title:"GST Registration", desc:"Seamless GST registration for new businesses", link:"gst-registration.html", color:"from-purple-500 to-pink-500"},
         {icon:"fa-chart-line", title:"GST Returns Filing", desc:"Monthly/quarterly GST return filing", link:"gst-return-filing.html", color:"from-blue-500 to-cyan-500"},
@@ -638,7 +553,6 @@
         `).join('');
     }
 
-    // Counter animation
     const counters = document.querySelectorAll('.counter');
     const observerCallback = (entries) => {
         entries.forEach(entry => {
@@ -664,7 +578,6 @@
     const observer = new IntersectionObserver(observerCallback, { threshold: 0.4 });
     counters.forEach(counter => observer.observe(counter));
 
-    // Scroll reveal
     const revealElements = document.querySelectorAll('.reveal-on-scroll');
     const revealObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
