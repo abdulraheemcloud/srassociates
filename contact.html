@@ -3,149 +3,387 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us | Best GST Practitioner in Coimbatore</title>
+    <title>Contact Us | SR Associates - Best GST Practitioner in Coimbatore</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
+        }
+        
+        /* Smooth scroll behavior */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* Floating button animations */
+        .floating-btn {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .floating-btn:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        
+        /* Ripple effect on click */
+        .floating-btn:active::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.5);
+            transform: translate(-50%, -50%);
+            animation: ripple 0.6s ease-out;
+        }
+        
+        @keyframes ripple {
+            0% { width: 0; height: 0; opacity: 0.5; }
+            100% { width: 100px; height: 100px; opacity: 0; }
+        }
+        
+        /* WhatsApp pulse animation */
+        @keyframes pulse-wa {
+            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
+        
+        .pulse-wa {
+            animation: pulse-wa 2s infinite;
+        }
+        
+        /* Card hover effects */
+        .contact-card {
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .contact-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        
+        .contact-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+        
+        .contact-card:hover::before {
+            left: 100%;
+        }
+        
+        /* Form input focus effects */
+        .form-input {
+            transition: all 0.3s ease;
+        }
+        
+        .form-input:focus {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        /* Submit button animation */
+        .submit-btn {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .submit-btn::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.4s, height 0.4s;
+        }
+        
+        .submit-btn:active::after {
+            width: 300px;
+            height: 300px;
+        }
+        
+        /* Loading spinner */
+        .spinner {
+            border: 2px solid rgba(255,255,255,0.3);
+            border-radius: 50%;
+            border-top: 2px solid white;
+            width: 20px;
+            height: 20px;
+            animation: spin 0.8s linear infinite;
+            display: inline-block;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* Toast notification */
+        .toast {
+            position: fixed;
+            bottom: 100px;
+            right: 20px;
+            z-index: 1000;
+            animation: slideIn 0.3s ease-out;
+        }
+        
+        @keyframes slideIn {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+        
+        /* Gradient text */
+        .gradient-text {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 4px;
+        }
+    </style>
 </head>
 <body>
 
-<nav class="fixed top-0 w-full z-50 bg-white shadow-md">
+<!-- Navigation -->
+<nav class="fixed top-0 w-full z-50 bg-white/95 backdrop-blur-md shadow-lg">
     <div class="container mx-auto px-4 py-4">
         <div class="flex justify-between items-center">
-            <a href="index.html" class="flex items-center gap-3">
-                <div class="w-10 h-10 bg-gradient-to-br from-cyan-700 to-blue-800 rounded-xl flex items-center justify-center"><span class="text-white font-bold text-xl">SR</span></div>
-                <div><span class="font-bold text-xl text-gray-800">SR <span class="text-cyan-700">Associates</span></span><p class="text-xs text-gray-500">GST & Tax Consultants</p></div>
+            <a href="index.html" class="flex items-center gap-3 group">
+                <div class="w-10 h-10 bg-gradient-to-br from-cyan-700 to-blue-800 rounded-xl flex items-center justify-center transform group-hover:scale-110 transition">
+                    <span class="text-white font-bold text-xl">SR</span>
+                </div>
+                <div>
+                    <span class="font-bold text-xl text-gray-800">SR <span class="text-cyan-700">Associates</span></span>
+                    <p class="text-xs text-gray-500">GST & Tax Consultants</p>
+                </div>
             </a>
             <div class="hidden md:flex items-center gap-8">
-                <a href="index.html" class="text-gray-600 hover:text-cyan-700 font-medium">Home</a>
-                <a href="about.html" class="text-gray-600 hover:text-cyan-700 font-medium">About</a>
-                <a href="services.html" class="text-gray-600 hover:text-cyan-700 font-medium">Services</a>
-                <a href="contact.html" class="text-gray-600 hover:text-cyan-700 font-medium">Contact</a>
+                <a href="index.html" class="text-gray-600 hover:text-cyan-700 font-medium transition">Home</a>
+                <a href="about.html" class="text-gray-600 hover:text-cyan-700 font-medium transition">About</a>
+                <a href="services.html" class="text-gray-600 hover:text-cyan-700 font-medium transition">Services</a>
+                <a href="contact.html" class="text-cyan-700 font-semibold transition">Contact</a>
             </div>
-            <a href="contact.html" class="hidden md:block bg-gradient-to-r from-cyan-700 to-blue-800 text-white px-6 py-2 rounded-full font-semibold">Get Quote</a>
+            <a href="https://wa.me/919087263742" target="_blank" class="hidden md:block bg-gradient-to-r from-green-500 to-green-600 text-white px-6 py-2 rounded-full font-semibold hover:shadow-lg transition transform hover:scale-105">
+                <i class="fab fa-whatsapp mr-2"></i>Chat on WhatsApp
+            </a>
             <button id="menuBtn" class="md:hidden text-2xl"><i class="fas fa-bars"></i></button>
         </div>
-        <div id="mobileMenu" class="md:hidden hidden mt-4 space-y-3">
-            <a href="index.html" class="block py-2">Home</a>
-            <a href="about.html" class="block py-2">About</a>
-            <a href="services.html" class="block py-2">Services</a>
-            <a href="contact.html" class="block py-2">Contact</a>
+        <div id="mobileMenu" class="md:hidden hidden mt-4 space-y-3 pb-3">
+            <a href="index.html" class="block py-2 hover:text-cyan-700 transition">Home</a>
+            <a href="about.html" class="block py-2 hover:text-cyan-700 transition">About</a>
+            <a href="services.html" class="block py-2 hover:text-cyan-700 transition">Services</a>
+            <a href="contact.html" class="block py-2 text-cyan-700 font-semibold transition">Contact</a>
         </div>
     </div>
 </nav>
 
-<section class="pt-32 pb-20 bg-gradient-to-br from-blue-50 to-cyan-50">
-    <div class="container mx-auto px-4 text-center">
-        <h1 class="text-5xl font-bold mb-4">Contact Us</h1>
-        <p class="text-xl text-gray-600">Get in touch for expert tax consultation</p>
+<!-- Hero Section -->
+<section class="pt-32 pb-20 bg-gradient-to-br from-blue-600 via-cyan-600 to-blue-800 relative overflow-hidden">
+    <div class="absolute inset-0 bg-black/20"></div>
+    <div class="absolute top-20 left-10 w-64 h-64 bg-white/10 rounded-full blur-3xl"></div>
+    <div class="absolute bottom-20 right-10 w-80 h-80 bg-white/10 rounded-full blur-3xl"></div>
+    <div class="container mx-auto px-4 text-center relative z-10">
+        <h1 class="text-5xl md:text-7xl font-bold mb-4 text-white animate-fade-in">Contact Us</h1>
+        <p class="text-xl text-white/90 max-w-2xl mx-auto">Get in touch with our expert team for all your tax and compliance needs</p>
     </div>
 </section>
 
+<!-- Main Content -->
 <section class="py-20">
     <div class="container mx-auto px-4">
-        <div class="grid md:grid-cols-2 gap-12">
-            <!-- Contact Form - Netlify Ready -->
-            <div>
-                <h2 class="text-3xl font-bold mb-6">Send us a Message</h2>
+        <div class="grid lg:grid-cols-2 gap-12">
+            
+            <!-- Contact Form Section -->
+            <div class="bg-white rounded-3xl shadow-2xl p-8 lg:p-10 transition hover:shadow-3xl">
+                <h2 class="text-3xl font-bold mb-2 gradient-text">Send us a Message</h2>
+                <p class="text-gray-500 mb-8">We'll get back to you within 24 hours</p>
                 
                 <!-- Success/Error Messages -->
-                <div id="successMsg" class="hidden mb-4 p-4 bg-green-100 text-green-700 rounded-lg border border-green-300">
-                    ✅ Thank you! Your message has been sent successfully. We'll contact you soon.
+                <div id="successMsg" class="hidden p-4 rounded-xl mb-6 bg-green-50 border border-green-200 text-green-700">
+                    <i class="fas fa-check-circle mr-2"></i> Thank you! Your message has been sent successfully.
                 </div>
-                <div id="errorMsg" class="hidden mb-4 p-4 bg-red-100 text-red-700 rounded-lg border border-red-300">
-                    ❌ Oops! Something went wrong. Please try again.
+                <div id="errorMsg" class="hidden p-4 rounded-xl mb-6 bg-red-50 border border-red-200 text-red-700">
+                    <i class="fas fa-exclamation-circle mr-2"></i> Oops! Something went wrong. Please try again.
                 </div>
 
                 <!-- Netlify Form -->
-                <form 
-                    name="contact" 
-                    method="POST" 
-                    data-netlify="true"
-                    netlify-honeypot="bot-field"
-                    id="contactForm"
-                    class="space-y-4"
-                >
+                <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" id="contactForm" class="space-y-5">
                     <input type="hidden" name="form-name" value="contact">
                     
-                    <!-- Honeypot for spam -->
+                    <!-- Honeypot -->
                     <div style="position: absolute; left: -9999px;">
                         <label for="bot-field">Don't fill this</label>
                         <input type="text" name="bot-field" id="bot-field">
                     </div>
 
-                    <input type="text" name="name" placeholder="Your Name" class="w-full p-3 border rounded-lg" required>
-                    <input type="tel" name="phone" placeholder="Phone Number" class="w-full p-3 border rounded-lg" required>
-                    <input type="email" name="email" placeholder="Email Address" class="w-full p-3 border rounded-lg">
-                    <select name="service" class="w-full p-3 border rounded-lg">
-                        <option>Select Service</option>
-                        <option>GST Registration</option>
-                        <option>GST Return Filing</option>
-                        <option>Income Tax Filing</option>
-                        <option>Company Registration</option>
-                        <option>FSSAI License</option>
-                        <option>MSME/Udyam Registration</option>
-                    </select>
-                    <textarea name="message" rows="5" placeholder="Your Message" class="w-full p-3 border rounded-lg"></textarea>
-                    <button type="submit" class="w-full bg-cyan-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-cyan-700 transition">Send Message</button>
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-700 mb-2">Your Name *</label>
+                            <input type="text" name="name" id="name" placeholder="John Doe" class="form-input w-full p-3 border border-gray-300 rounded-xl focus:border-cyan-500 focus:ring-2 focus:ring-cyan-200 transition outline-none" required>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-700 mb-2">Phone Number *</label>
+                            <input type="tel" name="phone" id="phone" placeholder="+91 XXXXXXXXXX" class="form-input w-full p-3 border border-gray-300 rounded-xl focus:border-cyan-500 focus:ring-2 focus:ring-cyan-200 transition outline-none" required>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-semibold text-gray-700 mb-2">Email Address</label>
+                        <input type="email" name="email" id="email" placeholder="john@example.com" class="form-input w-full p-3 border border-gray-300 rounded-xl focus:border-cyan-500 focus:ring-2 focus:ring-cyan-200 transition outline-none">
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-semibold text-gray-700 mb-2">Select Service</label>
+                        <select name="service" id="service" class="form-input w-full p-3 border border-gray-300 rounded-xl focus:border-cyan-500 focus:ring-2 focus:ring-cyan-200 transition outline-none">
+                            <option>Select a service</option>
+                            <option>GST Registration</option>
+                            <option>GST Return Filing</option>
+                            <option>Income Tax Filing</option>
+                            <option>Company Registration</option>
+                            <option>FSSAI License</option>
+                            <option>MSME/Udyam Registration</option>
+                            <option>Other Consultation</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-semibold text-gray-700 mb-2">Your Message *</label>
+                        <textarea name="message" id="message" rows="5" placeholder="Tell us about your requirement..." class="form-input w-full p-3 border border-gray-300 rounded-xl focus:border-cyan-500 focus:ring-2 focus:ring-cyan-200 transition outline-none resize-none"></textarea>
+                    </div>
+
+                    <button type="submit" id="submitBtn" class="submit-btn w-full bg-gradient-to-r from-cyan-600 to-blue-700 text-white px-8 py-4 rounded-xl font-semibold hover:shadow-xl transition transform hover:scale-[1.02]">
+                        <span id="btnText">Send Message</span>
+                        <span id="btnSpinner" class="hidden"><i class="fas fa-spinner fa-spin ml-2"></i></span>
+                    </button>
                 </form>
+                
+                <!-- Trust Badges -->
+                <div class="mt-8 flex justify-center gap-6 text-center text-sm text-gray-500">
+                    <div><i class="fas fa-lock text-green-500 mr-1"></i> Secure</div>
+                    <div><i class="fas fa-clock text-blue-500 mr-1"></i> 24/7 Support</div>
+                    <div><i class="fas fa-shield-alt text-purple-500 mr-1"></i> Confidential</div>
+                </div>
             </div>
 
             <!-- Contact Info + Google Maps -->
             <div>
-                <h2 class="text-3xl font-bold mb-6">Get in Touch</h2>
-                <div class="space-y-6">
-                    <div class="flex gap-4 p-4 bg-gray-50 rounded-xl">
-                        <i class="fas fa-map-marker-alt text-cyan-600 text-2xl"></i>
-                        <div>
-                            <h3 class="font-bold">Visit Our Office</h3>
+                <!-- Contact Cards -->
+                <div class="space-y-5">
+                    <!-- Office Card -->
+                    <div class="contact-card bg-white rounded-2xl p-6 shadow-lg flex gap-5">
+                        <div class="w-14 h-14 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-2xl flex items-center justify-center text-white text-2xl shadow-lg">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="font-bold text-xl mb-2">Visit Our Office</h3>
                             <p class="text-gray-600">SR ASSOCIATES (Auditor)</p>
                             <p class="text-gray-600">1st floor, 634, N.H.Road, Town Hall</p>
                             <p class="text-gray-600">Coimbatore, Tamil Nadu - 641001</p>
                         </div>
                     </div>
-                    <div class="flex gap-4 p-4 bg-gray-50 rounded-xl">
-                        <i class="fas fa-phone-alt text-cyan-600 text-2xl"></i>
-                        <div>
-                            <h3 class="font-bold">Call Us</h3>
-                            <p class="text-gray-600">+91 94872 21863</p>
-                            <p class="text-gray-600">+91 90872 63742</p>
+                    
+                    <!-- Call Card - ORDER: 1st=9087263742, 2nd=9487221863 -->
+                    <div class="contact-card bg-white rounded-2xl p-6 shadow-lg flex gap-5">
+                        <div class="w-14 h-14 bg-gradient-to-br from-green-500 to-teal-600 rounded-2xl flex items-center justify-center text-white text-2xl shadow-lg">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="font-bold text-xl mb-2">Call Us</h3>
+                            <p class="text-gray-600"><span class="font-semibold text-gray-800">Primary:</span> <a href="tel:+919087263742" class="text-cyan-600 hover:text-cyan-700 font-medium">+91 90872 63742</a></p>
+                            <p class="text-gray-600 mt-1"><span class="font-semibold text-gray-800">Alternate:</span> <a href="tel:+919487221863" class="text-gray-600 hover:text-cyan-600">+91 94872 21863</a></p>
+                            <div class="flex gap-3 mt-3">
+                                <span class="text-xs bg-green-100 text-green-700 px-2 py-1 rounded-full"><i class="fas fa-clock mr-1"></i>9AM-7PM</span>
+                                <span class="text-xs bg-blue-100 text-blue-700 px-2 py-1 rounded-full"><i class="fas fa-calendar mr-1"></i>Mon-Sat</span>
+                            </div>
                         </div>
                     </div>
-                    <div class="flex gap-4 p-4 bg-gray-50 rounded-xl">
-                        <i class="fas fa-envelope text-cyan-600 text-2xl"></i>
-                        <div>
-                            <h3 class="font-bold">Email Us</h3>
-                            <p class="text-gray-600">srassociateinfo.ca@gmail.com</p>
+                    
+                    <!-- Email Card -->
+                    <div class="contact-card bg-white rounded-2xl p-6 shadow-lg flex gap-5">
+                        <div class="w-14 h-14 bg-gradient-to-br from-red-500 to-pink-600 rounded-2xl flex items-center justify-center text-white text-2xl shadow-lg">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="font-bold text-xl mb-2">Email Us</h3>
+                            <p class="text-gray-600"><a href="mailto:srassociateinfo.ca@gmail.com" class="text-cyan-600 hover:text-cyan-700">srassociateinfo.ca@gmail.com</a></p>
+                            <p class="text-xs text-gray-400 mt-2">We reply within 24 hours</p>
                         </div>
                     </div>
-                    <div class="flex gap-4 p-4 bg-gray-50 rounded-xl">
-                        <i class="fab fa-whatsapp text-green-600 text-2xl"></i>
-                        <div>
-                            <h3 class="font-bold">WhatsApp</h3>
-                            <!-- UPDATED: WhatsApp number changed to 9087263742 -->
-                            <p class="text-gray-600">+91 90872 63742</p>
+                    
+                    <!-- WhatsApp Card - UPDATED to 9087263742 -->
+                    <div class="contact-card bg-gradient-to-r from-green-50 to-emerald-50 rounded-2xl p-6 shadow-lg flex gap-5 border border-green-200">
+                        <div class="w-14 h-14 bg-gradient-to-br from-green-500 to-emerald-600 rounded-2xl flex items-center justify-center text-white text-2xl shadow-lg">
+                            <i class="fab fa-whatsapp"></i>
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="font-bold text-xl mb-2">WhatsApp Us</h3>
+                            <p class="text-gray-700 text-lg font-semibold">+91 90872 63742</p>
+                            <a href="https://wa.me/919087263742" target="_blank" class="inline-block mt-2 bg-green-500 text-white px-5 py-2 rounded-full text-sm font-semibold hover:bg-green-600 transition shadow-md">
+                                <i class="fab fa-whatsapp mr-1"></i> Chat Now
+                            </a>
                         </div>
                     </div>
                 </div>
 
-                <!-- GOOGLE MAPS -->
-                <div class="mt-8">
-                    <h3 class="font-bold text-xl mb-4">Our Location</h3>
-                    <div class="rounded-xl overflow-hidden shadow-lg">
+                <!-- Google Maps -->
+                <div class="mt-8 bg-white rounded-2xl overflow-hidden shadow-xl">
+                    <div class="p-4 border-b">
+                        <h3 class="font-bold text-xl"><i class="fas fa-map text-cyan-600 mr-2"></i>Our Location</h3>
+                    </div>
+                    <div class="h-80 overflow-hidden">
                         <iframe 
                             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3916.317404672771!2d76.955964!3d11.018544!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba858b6c3c9f8b5%3A0x8b8b8b8b8b8b8b8b!2s634%2C%20N.H.Road%2C%20Town%20Hall%2C%20Coimbatore%2C%20Tamil%20Nadu%20641001!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" 
                             width="100%" 
-                            height="300" 
-                            style="border:0; border-radius: 0.75rem;" 
+                            height="100%" 
+                            style="border:0;" 
                             allowfullscreen="" 
-                            loading="lazy" 
-                            referrerpolicy="no-referrer-when-downgrade">
+                            loading="lazy">
                         </iframe>
                     </div>
-                    <div class="mt-3 text-center">
-                        <a href="https://maps.google.com/?q=634+N.H+Road+Town+Hall+Coimbatore+641001" target="_blank" class="text-cyan-600 hover:text-cyan-700 text-sm inline-flex items-center gap-1">
-                            <i class="fas fa-external-link-alt"></i> Open in Google Maps
+                    <div class="p-4 text-center border-t">
+                        <a href="https://maps.google.com/?q=634+N.H+Road+Town+Hall+Coimbatore+641001" target="_blank" class="text-cyan-600 hover:text-cyan-700 text-sm inline-flex items-center gap-1 transition">
+                            <i class="fas fa-external-link-alt"></i> Get Directions
                         </a>
                     </div>
                 </div>
@@ -154,48 +392,138 @@
     </div>
 </section>
 
-<footer class="bg-gray-900 text-white pt-12 pb-6">
+<!-- Footer -->
+<footer class="bg-gray-900 text-white pt-12 pb-6 mt-10">
     <div class="container mx-auto px-4">
         <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-            <div><h3 class="font-bold text-xl mb-4">SR Associates</h3><p class="text-gray-400 text-sm">Expert GST & Income Tax consultancy in Coimbatore since 2010.</p></div>
-            <div><h4 class="font-bold mb-4">Quick Links</h4><ul class="space-y-2 text-gray-400"><li><a href="index.html" class="hover:text-cyan-400">Home</a></li><li><a href="about.html" class="hover:text-cyan-400">About</a></li><li><a href="services.html" class="hover:text-cyan-400">Services</a></li><li><a href="contact.html" class="hover:text-cyan-400">Contact</a></li></ul></div>
-            <div><h4 class="font-bold mb-4">Our Services</h4><ul class="space-y-2 text-gray-400"><li>GST Registration</li><li>GST Returns Filing</li><li>Income Tax Filing</li><li>Company Registration</li><li>FSSAI License</li><li>MSME/Udyam Registration</li></ul></div>
-            <div><h4 class="font-bold mb-4">Contact Us</h4><ul class="space-y-3 text-gray-400"><li class="flex items-center gap-3"><i class="fas fa-phone-alt text-cyan-500"></i><span>+91 94872 21863</span></li><li class="flex items-center gap-3"><i class="fas fa-phone-alt text-cyan-500"></i><span>+91 90872 63742</span></li><li class="flex items-center gap-3"><i class="fas fa-envelope text-cyan-500"></i><span>srassociateinfo.ca@gmail.com</span></li><li class="flex items-center gap-3"><i class="fas fa-map-marker-alt text-cyan-500"></i><span>No.634 Super Complex, 1st Floor, N.H Road, Marakkadai, Coimbatore</span></li></ul></div>
+            <div>
+                <h3 class="font-bold text-xl mb-4">SR Associates</h3>
+                <p class="text-gray-400 text-sm">Expert GST & Income Tax consultancy in Coimbatore since 2010.</p>
+            </div>
+            <div>
+                <h4 class="font-bold mb-4">Quick Links</h4>
+                <ul class="space-y-2 text-gray-400 text-sm">
+                    <li><a href="index.html" class="hover:text-cyan-400 transition">Home</a></li>
+                    <li><a href="about.html" class="hover:text-cyan-400 transition">About</a></li>
+                    <li><a href="services.html" class="hover:text-cyan-400 transition">Services</a></li>
+                    <li><a href="contact.html" class="hover:text-cyan-400 transition">Contact</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-bold mb-4">Our Services</h4>
+                <ul class="space-y-2 text-gray-400 text-xs">
+                    <li>GST Registration</li>
+                    <li>GST Returns Filing</li>
+                    <li>Income Tax Filing</li>
+                    <li>Company Registration</li>
+                    <li>FSSAI License</li>
+                    <li>MSME/Udyam Registration</li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-bold mb-4">Contact Info</h4>
+                <ul class="space-y-3 text-gray-400 text-sm">
+                    <li class="flex items-center gap-3"><i class="fas fa-phone-alt text-cyan-500"></i><span>+91 90872 63742</span></li>
+                    <li class="flex items-center gap-3"><i class="fas fa-phone-alt text-cyan-500"></i><span>+91 94872 21863</span></li>
+                    <li class="flex items-center gap-3"><i class="fas fa-envelope text-cyan-500"></i><span>srassociateinfo.ca@gmail.com</span></li>
+                    <li class="flex items-center gap-3"><i class="fas fa-map-marker-alt text-cyan-500"></i><span>No.634 Super Complex, 1st Floor, N.H Road, Coimbatore</span></li>
+                </ul>
+            </div>
         </div>
         <div class="border-t border-gray-700 mt-8 pt-6 text-center text-gray-400 text-sm">© 2026 SR Associates | S. Abdul Rahman GSTP | Coimbatore</div>
     </div>
 </footer>
 
-<!-- Floating Buttons - UPDATED WhatsApp number to 9087263742 -->
+<!-- Floating Buttons - Modern Design -->
 <div class="fixed bottom-6 right-6 z-50 flex flex-col gap-3">
-    <!-- Call Primary: 9487221863 -->
-    <a href="tel:+919487221863" class="bg-blue-600 text-white p-4 rounded-full shadow-2xl hover:bg-blue-700 transition w-14 h-14 flex items-center justify-center">
-        <i class="fas fa-phone-alt text-xl"></i>
-    </a>
-    <!-- Call Secondary: 9087263742 -->
-    <a href="tel:+919087263742" class="bg-green-600 text-white p-4 rounded-full shadow-2xl hover:bg-green-700 transition w-14 h-14 flex items-center justify-center">
-        <i class="fas fa-phone-alt text-xl"></i>
-    </a>
-    <!-- WhatsApp - UPDATED to 9087263742 -->
-    <a href="https://wa.me/919087263742" class="bg-green-500 text-white p-4 rounded-full shadow-2xl hover:bg-green-600 transition w-14 h-14 flex items-center justify-center animate-pulse">
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/919087263742" target="_blank" class="floating-btn bg-gradient-to-r from-green-500 to-green-600 text-white p-4 rounded-full shadow-2xl w-14 h-14 flex items-center justify-center pulse-wa" title="WhatsApp Us">
         <i class="fab fa-whatsapp text-2xl"></i>
+    </a>
+    <!-- Call Primary Button -->
+    <a href="tel:+919087263742" class="floating-btn bg-gradient-to-r from-blue-500 to-blue-600 text-white p-4 rounded-full shadow-2xl w-14 h-14 flex items-center justify-center" title="Call Primary: +91 90872 63742">
+        <i class="fas fa-phone-alt text-xl"></i>
+    </a>
+    <!-- Call Secondary Button -->
+    <a href="tel:+919487221863" class="floating-btn bg-gradient-to-r from-teal-500 to-teal-600 text-white p-4 rounded-full shadow-2xl w-14 h-14 flex items-center justify-center" title="Call Alternate: +91 94872 21863">
+        <i class="fas fa-phone-alt text-xl"></i>
     </a>
 </div>
 
 <script>
     // Mobile menu toggle
-    document.getElementById('menuBtn').addEventListener('click', function() {
-        document.getElementById('mobileMenu').classList.toggle('hidden');
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    
+    menuBtn.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
     });
-
-    // Handle Netlify form submission success message
+    
+    // Check for Netlify form success parameter
     const urlParams = new URLSearchParams(window.location.search);
     if (urlParams.get('form') === 'success') {
-        document.getElementById('successMsg').classList.remove('hidden');
+        const successMsg = document.getElementById('successMsg');
+        successMsg.classList.remove('hidden');
         setTimeout(() => {
-            document.getElementById('successMsg').classList.add('hidden');
+            successMsg.classList.add('hidden');
         }, 5000);
     }
+    
+    // Form submission handling with loading state
+    const form = document.getElementById('contactForm');
+    const submitBtn = document.getElementById('submitBtn');
+    const btnText = document.getElementById('btnText');
+    const btnSpinner = document.getElementById('btnSpinner');
+    
+    form.addEventListener('submit', function(e) {
+        const name = document.getElementById('name').value.trim();
+        const phone = document.getElementById('phone').value.trim();
+        const message = document.getElementById('message').value.trim();
+        
+        if (!name || !phone || !message) {
+            e.preventDefault();
+            const errorMsg = document.getElementById('errorMsg');
+            errorMsg.classList.remove('hidden');
+            setTimeout(() => {
+                errorMsg.classList.add('hidden');
+            }, 3000);
+            return;
+        }
+        
+        // Show loading spinner
+        btnText.classList.add('hidden');
+        btnSpinner.classList.remove('hidden');
+        submitBtn.disabled = true;
+        
+        // Re-enable after form submission (actual submission handled by Netlify)
+        setTimeout(() => {
+            btnText.classList.remove('hidden');
+            btnSpinner.classList.add('hidden');
+            submitBtn.disabled = false;
+        }, 2000);
+    });
+    
+    // Add animation on scroll
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+            }
+        });
+    }, observerOptions);
+    
+    document.querySelectorAll('.contact-card').forEach(card => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(30px)';
+        card.style.transition = 'all 0.5s ease';
+        observer.observe(card);
+    });
 </script>
 </body>
 </html>
