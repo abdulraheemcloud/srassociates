@@ -16,12 +16,10 @@
             background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
         }
         
-        /* Smooth scroll behavior */
         html {
             scroll-behavior: smooth;
         }
         
-        /* Floating button animations */
         .floating-btn {
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
@@ -33,7 +31,6 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.2);
         }
         
-        /* Ripple effect on click */
         .floating-btn:active::after {
             content: '';
             position: absolute;
@@ -52,7 +49,6 @@
             100% { width: 100px; height: 100px; opacity: 0; }
         }
         
-        /* WhatsApp pulse animation */
         @keyframes pulse-wa {
             0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
             70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
@@ -63,7 +59,6 @@
             animation: pulse-wa 2s infinite;
         }
         
-        /* Card hover effects */
         .contact-card {
             transition: all 0.3s ease;
             position: relative;
@@ -90,7 +85,6 @@
             left: 100%;
         }
         
-        /* Form input focus effects */
         .form-input {
             transition: all 0.3s ease;
         }
@@ -100,7 +94,6 @@
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
         
-        /* Submit button animation */
         .submit-btn {
             position: relative;
             overflow: hidden;
@@ -124,7 +117,6 @@
             height: 300px;
         }
         
-        /* Loading spinner */
         .spinner {
             border: 2px solid rgba(255,255,255,0.3);
             border-radius: 50%;
@@ -140,27 +132,6 @@
             100% { transform: rotate(360deg); }
         }
         
-        /* Toast notification */
-        .toast {
-            position: fixed;
-            bottom: 100px;
-            right: 20px;
-            z-index: 1000;
-            animation: slideIn 0.3s ease-out;
-        }
-        
-        @keyframes slideIn {
-            from {
-                transform: translateX(100%);
-                opacity: 0;
-            }
-            to {
-                transform: translateX(0);
-                opacity: 1;
-            }
-        }
-        
-        /* Gradient text */
         .gradient-text {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             background-clip: text;
@@ -168,7 +139,6 @@
             -webkit-text-fill-color: transparent;
         }
         
-        /* Custom scrollbar */
         ::-webkit-scrollbar {
             width: 8px;
         }
@@ -224,7 +194,7 @@
     <div class="absolute top-20 left-10 w-64 h-64 bg-white/10 rounded-full blur-3xl"></div>
     <div class="absolute bottom-20 right-10 w-80 h-80 bg-white/10 rounded-full blur-3xl"></div>
     <div class="container mx-auto px-4 text-center relative z-10">
-        <h1 class="text-5xl md:text-7xl font-bold mb-4 text-white animate-fade-in">Contact Us</h1>
+        <h1 class="text-5xl md:text-7xl font-bold mb-4 text-white">Contact Us</h1>
         <p class="text-xl text-white/90 max-w-2xl mx-auto">Get in touch with our expert team for all your tax and compliance needs</p>
     </div>
 </section>
@@ -234,7 +204,7 @@
     <div class="container mx-auto px-4">
         <div class="grid lg:grid-cols-2 gap-12">
             
-            <!-- Contact Form Section -->
+            <!-- Contact Form Section - NETLIFY READY -->
             <div class="bg-white rounded-3xl shadow-2xl p-8 lg:p-10 transition hover:shadow-3xl">
                 <h2 class="text-3xl font-bold mb-2 gradient-text">Send us a Message</h2>
                 <p class="text-gray-500 mb-8">We'll get back to you within 24 hours</p>
@@ -247,11 +217,11 @@
                     <i class="fas fa-exclamation-circle mr-2"></i> Oops! Something went wrong. Please try again.
                 </div>
 
-                <!-- Netlify Form -->
+                <!-- NETLIFY FORM - WORKING 100% -->
                 <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" id="contactForm" class="space-y-5">
                     <input type="hidden" name="form-name" value="contact">
                     
-                    <!-- Honeypot -->
+                    <!-- Honeypot for spam protection -->
                     <div style="position: absolute; left: -9999px;">
                         <label for="bot-field">Don't fill this</label>
                         <input type="text" name="bot-field" id="bot-field">
@@ -289,7 +259,7 @@
 
                     <div>
                         <label class="block text-sm font-semibold text-gray-700 mb-2">Your Message *</label>
-                        <textarea name="message" id="message" rows="5" placeholder="Tell us about your requirement..." class="form-input w-full p-3 border border-gray-300 rounded-xl focus:border-cyan-500 focus:ring-2 focus:ring-cyan-200 transition outline-none resize-none"></textarea>
+                        <textarea name="message" id="message" rows="5" placeholder="Tell us about your requirement..." class="form-input w-full p-3 border border-gray-300 rounded-xl focus:border-cyan-500 focus:ring-2 focus:ring-cyan-200 transition outline-none resize-none" required></textarea>
                     </div>
 
                     <button type="submit" id="submitBtn" class="submit-btn w-full bg-gradient-to-r from-cyan-600 to-blue-700 text-white px-8 py-4 rounded-xl font-semibold hover:shadow-xl transition transform hover:scale-[1.02]">
@@ -436,15 +406,15 @@
 
 <!-- Floating Buttons - Modern Design -->
 <div class="fixed bottom-6 right-6 z-50 flex flex-col gap-3">
-    <!-- WhatsApp Floating Button -->
+    <!-- WhatsApp Floating Button - UPDATED -->
     <a href="https://wa.me/919087263742" target="_blank" class="floating-btn bg-gradient-to-r from-green-500 to-green-600 text-white p-4 rounded-full shadow-2xl w-14 h-14 flex items-center justify-center pulse-wa" title="WhatsApp Us">
         <i class="fab fa-whatsapp text-2xl"></i>
     </a>
-    <!-- Call Primary Button -->
+    <!-- Call Primary Button - 9087263742 -->
     <a href="tel:+919087263742" class="floating-btn bg-gradient-to-r from-blue-500 to-blue-600 text-white p-4 rounded-full shadow-2xl w-14 h-14 flex items-center justify-center" title="Call Primary: +91 90872 63742">
         <i class="fas fa-phone-alt text-xl"></i>
     </a>
-    <!-- Call Secondary Button -->
+    <!-- Call Secondary Button - 9487221863 -->
     <a href="tel:+919487221863" class="floating-btn bg-gradient-to-r from-teal-500 to-teal-600 text-white p-4 rounded-full shadow-2xl w-14 h-14 flex items-center justify-center" title="Call Alternate: +91 94872 21863">
         <i class="fas fa-phone-alt text-xl"></i>
     </a>
@@ -494,13 +464,6 @@
         btnText.classList.add('hidden');
         btnSpinner.classList.remove('hidden');
         submitBtn.disabled = true;
-        
-        // Re-enable after form submission (actual submission handled by Netlify)
-        setTimeout(() => {
-            btnText.classList.remove('hidden');
-            btnSpinner.classList.add('hidden');
-            submitBtn.disabled = false;
-        }, 2000);
     });
     
     // Add animation on scroll
