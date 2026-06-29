@@ -1,13 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-    <url><loc>https://srassociates.in/</loc><priority>1.0</priority></url>
-    <url><loc>https://srassociates.in/about.html</loc><priority>0.8</priority></url>
-    <url><loc>https://srassociates.in/services.html</loc><priority>0.9</priority></url>
-    <url><loc>https://srassociates.in/contact.html</loc><priority>0.8</priority></url>
-    <url><loc>https://srassociates.in/gst-registration.html</loc><priority>0.9</priority></url>
-    <url><loc>https://srassociates.in/gst-return-filing.html</loc><priority>0.9</priority></url>
-    <url><loc>https://srassociates.in/income-tax-filing.html</loc><priority>0.9</priority></url>
-    <url><loc>https://srassociates.in/company-registration.html</loc><priority>0.8</priority></url>
-    <url><loc>https://srassociates.in/fssai.html</loc><priority>0.8</priority></url>
-    <url><loc>https://srassociates.in/udyam.html</loc><priority>0.8</priority></url>
+    <url><loc>https://srassociatesca.in/</loc><priority>1.0</priority></url>
+    <url><loc>https://srassociatesca.in/about.html</loc><priority>0.8</priority></url>
+    <url><loc>https://srassociatesca.in/services.html</loc><priority>0.9</priority></url>
+    <url><loc>https://srassociatesca.in/contact.html</loc><priority>0.8</priority></url>
+    <url><loc>https://srassociatesca.in/gst-registration.html</loc><priority>0.9</priority></url>
+    <url><loc>https://srassociatesca.in/gst-return-filing.html</loc><priority>0.9</priority></url>
+    <url><loc>https://srassociatesca.in/income-tax-filing.html</loc><priority>0.9</priority></url>
+    <url><loc>https://srassociatesca.in/company-registration.html</loc><priority>0.8</priority></url>
+    <url><loc>https://srassociatesca.in/gst-compliance.html</loc><priority>0.8</priority></url>
+    <url><loc>https://srassociatesca.in/ie-code.html</loc><priority>0.8</priority></url>
+    <url><loc>https://srassociatesca.in/fssai.html</loc><priority>0.8</priority></url>
+    <url><loc>https://srassociatesca.in/udyam.html</loc><priority>0.8</priority></url>
+    <url><loc>https://srassociatesca.in/book-keeping.html</loc><priority>0.7</priority></url>
+    <url><loc>https://srassociatesca.in/ca-certifications.html</loc><priority>0.7</priority></url>
+    <url><loc>https://srassociatesca.in/digital-signature.html</loc><priority>0.7</priority></url>
+    <url><loc>https://srassociatesca.in/startup-registration.html</loc><priority>0.7</priority></url>
+    <url><loc>https://srassociatesca.in/trust-registration.html</loc><priority>0.7</priority></url>
 </urlset>
